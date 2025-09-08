@@ -1,0 +1,26 @@
+{
+  "name": "sseidelmann/junit-converter",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "sebastianseidelmann",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "symfony/console": "*",
+    "ext-dom": "*",
+    "softcreatr/jsonpath": "*",
+    "ext-jsonpath": "*"
+  },
+  "bin": [
+    "bin/junit-converter"
+  ],
+  "autoload": {
+    "psr-4": {
+      "\\Sseidelmann\\JunitConverter\\": "src/"
+    }
+  }
+}

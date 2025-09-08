@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+
+<?php
+
+use Sseidelmann\JunitConverter\Commands\ConvertCommand;
+use Sseidelmann\JunitConverter\Commands\ConverterListCommand;
+use Sseidelmann\JunitConverter\Factories\ConverterFactory;
+use Symfony\Component\Console\Application;
+
+function includeIfExists($file)
+{
+    if (file_exists($file)) {
+        return include $file;
+    }
+}
+
+if ((!$loader = includeIfExists(__DIR__ . '/vendor/autoload.php')) &&
+    (!$loader = includeIfExists(__DIR__ . '/../vendor/autoload.php')) &&
+    (!$loader = includeIfExists(__DIR__ . '/../../autoload.php'))
+) {
+    die(
+        'You must set up the project dependencies, run the following commands:' . PHP_EOL .
+        'curl -sS https://getcomposer.org/installer | php' . PHP_EOL .
+        'php composer.phar install' . PHP_EOL
+    );
+}
+
+$converterFactory = new ConverterFactory();
+
+$application = new Application("Junit Converter");
+
+$application->add(new ConvertCommand($converterFactory));
+$application->add(new ConverterListCommand($converterFactory));
+
+$application->run();
