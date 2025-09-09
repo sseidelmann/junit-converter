@@ -27,7 +27,7 @@ class ConverterListCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('list')
+            ->setName('convert:list')
             ->setDescription(
                 'Lists the converter'
             )

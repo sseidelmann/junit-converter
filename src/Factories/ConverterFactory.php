@@ -4,6 +4,7 @@ namespace Sseidelmann\JunitConverter\Factories;
 
 use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
+use Sseidelmann\JunitConverter\Converters\GnuConverter;
 use Sseidelmann\JunitConverter\Converters\SonarqubeConverter;
 
 class ConverterFactory
@@ -11,7 +12,8 @@ class ConverterFactory
     /** @var ConverterInterface[] $converters */
     private array $converters = [
         CheckstyleConverter::class,
-        SonarqubeConverter::class
+        SonarqubeConverter::class,
+        GnuConverter::class
     ];
 
     public function guessConverter(string $input): ?ConverterInterface {

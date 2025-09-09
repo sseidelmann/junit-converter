@@ -12,10 +12,20 @@ use Sseidelmann\JunitConverter\JUnit\TestSuite;
 
 class GnuConverter extends AbstractConverter implements ConverterInterface
 {
+    private array $matches;
+
+    public function getName(): string
+    {
+        return "gnu";
+    }
+
+
     public function isReport(): bool
     {
         if (!$this->isJson($this->getInput()) && !$this->isXml($this->getInput())) {
-
+            // <Tool>:<Datei>:<Zeile>:<Regel-ID> <Schwere>:<Beschreibung>
+            $this->matches = [];
+            return false !== preg_match_all("/(?<tool>[^\:]+)\:(?<file>[^\:]+)\:(?<line>[^\:]+)\:\s?(?<rule>[^\s]+)\s(?<severity>[^\:]+)\:\s?(?<message>.+)/m", $this->getInput(), $this->matches);
         }
 
         return false;
@@ -23,39 +33,34 @@ class GnuConverter extends AbstractConverter implements ConverterInterface
 
     public function convert(): Junit
     {
-        $dom = $this->loadXml($this->getInput());
-
-        $xpath = new DOMXPath($dom);
-        $checkstyle = $xpath->query("//checkstyle")->item(0);
-
         $junit = new JUnit();
 
-        $testSuite = new TestSuite("checkstyle");
+        $testSuite = new TestSuite("gnu");
 
-        $files = $xpath->query('file', $checkstyle);
+        $fileMatches = [];
+        foreach ($this->matches['file'] as $cnt => $file) {
+            $fileMatches[$file][] = [
+                'tool' => trim($this->matches['tool'][$cnt]),
+                'line' => trim($this->matches['line'][$cnt]),
+                'rule' => trim($this->matches['rule'][$cnt]),
+                'severity' => trim($this->matches['severity'][$cnt]),
+                'message' => trim($this->matches['message'][$cnt])
+            ];
+        }
+
         /** @var DOMElement $file */
-        foreach ($files as $file) {
-            $fileName = $file->getAttribute('name');
+        foreach ($fileMatches as $file => $matches) {
+            $testCase = new TestCase($file);
 
-            $testCase = new TestCase($fileName);
-
-            $errors = $xpath->query('error', $file);
-            print_r($errors);
-            foreach ($errors as $error) {
-                $line = $error->getAttribute('line');
-                $column = $error->getAttribute('column');
-                $severity = $error->getAttribute('severity');
-                $message = $error->getAttribute('message');
-                $source = $error->getAttribute('source');
-
-                $testCase->addFailure(Failure::Warning(
-                    $source,
+            foreach ($matches as $match) {
+                $testCase->addFailure(Failure::Generic(
+                    $match['severity'],
+                    $match['rule'],
                     sprintf(
-                        '%1$s in %2$s on line %3$s column %4$s',
-                        $message,
-                        $fileName,
-                        $line,
-                        $column
+                        '%1$s in %2$s on line %3$s',
+                        $match['message'],
+                        $file,
+                        $match['line']
                     )
                 ));
             }
