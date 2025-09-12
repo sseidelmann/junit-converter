@@ -1,4 +1,14 @@
 <?php
+/**
+ * @project Junit Converter
+ * @file GnuConverter.php
+ * @author Sebastian Seidelmann
+ * @copyright 2025 Sebastian Seidelmann
+ * @license MIT
+ */
+
+declare(strict_types=1);
+
 
 namespace Sseidelmann\JunitConverter\Converters;
 
@@ -16,7 +26,7 @@ class GnuConverter extends AbstractConverter implements ConverterInterface
 
     public function getName(): string
     {
-        return "gnu";
+        return 'gnu';
     }
 
 
@@ -25,7 +35,9 @@ class GnuConverter extends AbstractConverter implements ConverterInterface
         if (!$this->isJson($this->getInput()) && !$this->isXml($this->getInput())) {
             // <Tool>:<Datei>:<Zeile>:<Regel-ID> <Schwere>:<Beschreibung>
             $this->matches = [];
-            return false !== preg_match_all("/(?<tool>[^\:]+)\:(?<file>[^\:]+)\:(?<line>[^\:]+)\:\s?(?<rule>[^\s]+)\s(?<severity>[^\:]+)\:\s?(?<message>.+)/m", $this->getInput(), $this->matches);
+            preg_match_all("/(?<tool>[^\:]+)\:(?<file>[^\:]+)\:(?<line>[^\:]+)\:\s?(?<rule>[^\s]+)\s(?<severity>[^\:]+)\:\s?(?<message>.+)/m", $this->getInput(), $this->matches);
+
+            return count($this->matches[0]) > 0;
         }
 
         return false;
@@ -35,7 +47,7 @@ class GnuConverter extends AbstractConverter implements ConverterInterface
     {
         $junit = new JUnit();
 
-        $testSuite = new TestSuite("gnu");
+        $testSuite = $junit->testSuite("gnu");
 
         $fileMatches = [];
         foreach ($this->matches['file'] as $cnt => $file) {
@@ -50,7 +62,7 @@ class GnuConverter extends AbstractConverter implements ConverterInterface
 
         /** @var DOMElement $file */
         foreach ($fileMatches as $file => $matches) {
-            $testCase = new TestCase($file);
+            $testCase = $testSuite->testCase($file);
 
             foreach ($matches as $match) {
                 $testCase->addFailure(Failure::Generic(
@@ -64,11 +76,7 @@ class GnuConverter extends AbstractConverter implements ConverterInterface
                     )
                 ));
             }
-
-            $testSuite->addTestCase($testCase);
         }
-
-        $junit->addTestSuite($testSuite);
 
 
         return $junit;

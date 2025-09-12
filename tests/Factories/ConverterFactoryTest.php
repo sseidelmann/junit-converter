@@ -14,10 +14,10 @@ namespace Sseidelmann\JunitConverterTests\Factories;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
+use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\Converters\GnuConverter;
 use Sseidelmann\JunitConverter\Converters\SonarqubeConverter;
 use Sseidelmann\JunitConverter\Factories\ConverterFactory;
-use Sseidelmann\JunitConverterTests\Helper\ConverterTestCase;
 
 class ConverterFactoryTest extends TestCase
 {
@@ -58,5 +58,32 @@ class ConverterFactoryTest extends TestCase
         );
 
         $this->assertInstanceOf(GnuConverter::class, $converter);
+    }
+
+    #[Test]
+    public function itReturnsNullIfNoConverterWasFound(): void {
+        $converterFactory = new ConverterFactory();
+
+        $converter = $converterFactory->guessConverter('');
+
+        $this->assertNull($converter);
+    }
+
+    #[Test]
+    public function itHasConverters(): void {
+        $converterFactory = new ConverterFactory();
+
+        $converters = $converterFactory->getConverter();
+
+        $this->assertNotEmpty($converters);
+    }
+
+    #[Test]
+    public function itContainsConverterInterfaces(): void {
+        $converterFactory = new ConverterFactory();
+
+        $converters = $converterFactory->getConverter();
+
+        $this->assertContainsOnlyInstancesOf(ConverterInterface::class, $converters);
     }
 }

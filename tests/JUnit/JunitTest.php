@@ -13,6 +13,7 @@ namespace Sseidelmann\JunitConverterTests\JUnit;
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
 final class JunitTest extends TestCase
@@ -38,6 +39,20 @@ final class JunitTest extends TestCase
         $junit = new JUnit();
 
         $this->assertFalse($junit->hasFailures());
+    }
+
+
+    #[Test]
+    public function itAddsTheFailureCount(): void {
+        $junit = new JUnit();
+
+        $testSuite = $junit->testSuite('my_test_suite');
+
+        $testCase = $testSuite->testCase('test_case');
+
+        $testCase->addFailure(new Failure('type', 'string'));
+
+        $this->assertTrue($junit->hasFailures());
     }
 
     #[Test]

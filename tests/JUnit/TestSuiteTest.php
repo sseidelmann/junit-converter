@@ -16,34 +16,17 @@ use PHPUnit\Framework\TestCase;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
-class TestCaseTest extends TestCase
+class TestSuiteTest extends TestCase
 {
-    #[Test]
-    public function itAddsTheFailuresCasesToTheStorage(): void {
-        $junit = new JUnit();
-
-        $testsuite = $junit->testSuite('my_testsuite');
-
-        $testCase = $testsuite->testCase('my_testcase');
-
-        $testCase->addFailure(new Failure('type', 'message'));
-
-        $this->assertCount(1, $testCase->getFailures());
-    }
-
     #[Test]
     public function toXmlCreateInstanceOfDomNode(): void {
         $junit = new JUnit();
 
         $testsuite = $junit->testSuite('my_testsuite');
 
-        $testCase = $testsuite->testCase('my_testcase');
-
-        $testCase->addFailure(new Failure('type', 'message'));
-
         $domDocument = new \DOMDocument();
 
-        $xml = $testCase->toXML($domDocument);
+        $xml = $testsuite->toXML($domDocument);
 
         $this->assertInstanceOf(\DOMNode::class, $xml);
     }

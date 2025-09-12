@@ -60,10 +60,6 @@ class JUnit
      */
     public function hasFailures(): bool
     {
-        if (empty($this->testSuites)) {
-            return false;
-        }
-
         foreach ($this->testSuites as $testSuite) {
             if ($testSuite->getFailureCount() > 0) {
                 return true;
