@@ -24,6 +24,37 @@ cat checkstyle.xml | junit-converter convert > junit.xml
 
 ### Unterstützte Formate
 
+#### Checkstyle
+```
+$ hadolint -f checkstyle Dockerfile
+
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="4.3">
+    <file name="Service/Dockerfile">
+        <error column="1" line="19" message="Always tag the version of an image explicitly" severity="warning" source="DL3006"/>
+        <error column="1" line="29" message="Multiple consecutive `RUN` instructions. Consider consolidation." severity="info" source="DL3059"/>
+    </file>
+</checkstyle>
+```
+
+#### NPM Outdated (json)
+```
+$ npm outdated --json
+
+{
+  "@angular/animations": {
+    "wanted": "14.3.0",
+    "latest": "19.2.15",
+    "dependent": "angular-app"
+  },
+  "@angular/cdk": {
+    "wanted": "14.2.7",
+    "latest": "20.2.3",
+    "dependent": "angular-app"
+  }
+}
+```
+
 ## Anforderungen
 
 - PHP 8.3 oder höher
