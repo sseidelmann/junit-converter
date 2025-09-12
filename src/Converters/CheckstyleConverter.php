@@ -50,7 +50,6 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
             $testCase = new TestCase($fileName);
 
             $errors = $xpath->query('error', $file);
-            print_r($errors);
             foreach ($errors as $error) {
                 $line = $error->getAttribute('line');
                 $column = $error->getAttribute('column');
@@ -58,7 +57,8 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
                 $message = $error->getAttribute('message');
                 $source = $error->getAttribute('source');
 
-                $testCase->addFailure(Failure::Warning(
+                $testCase->addFailure(Failure::Generic(
+                    $severity,
                     $source,
                     sprintf(
                         '%1$s in %2$s on line %3$s column %4$s',
