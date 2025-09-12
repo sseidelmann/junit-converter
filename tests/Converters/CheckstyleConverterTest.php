@@ -12,14 +12,14 @@ declare(strict_types=1);
 namespace Sseidelmann\JunitConverterTests\Converters;
 
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
-use Sseidelmann\JunitConverter\JUnit\TestCase;
 
 class CheckstyleConverterTest extends TestCase
 {
     private function loadAsset(string $asset): string {
-        $filePath = __DIR__ . '/assets/' . $asset;
+        $filePath = dirname(__FILE__) . '/../assets/' . $asset;
 
         return file_get_contents($filePath);
     }
