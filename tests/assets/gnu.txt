@@ -1,0 +1,6 @@
+hadolint:Dockerfile-test:1: DL3007 warning: Using latest is prone to errors if the image will ever update. Pin the version explicitly to a release tag
+hadolint:Dockerfile-test:5: DL3059 info: Multiple consecutive `RUN` instructions. Consider consolidation.
+pipeline_lint:bitbucket-pipelines.yml:0:R2001 warning:The skipped line "cpc skip" should be removed
+pipeline_lint:bitbucket-pipelines.yml:0:R2001 warning:The skipped line "cpc skip" should be removed
+pipeline_lint:bitbucket-pipelines.yml:0:R3002 info:There are more dockerfiles then linting with hadolint
+pipeline_lint:bitbucket-pipelines.yml:0:R1003 info:Obsolete definitions block found

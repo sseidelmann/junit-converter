@@ -1,0 +1,62 @@
+<?php
+/**
+ * @project Junit Converter
+ * @file ConverterFactoryTests.php
+ * @author Sebastian Seidelmann
+ * @copyright 2025 Sebastian Seidelmann
+ * @license MIT
+ */
+
+declare(strict_types=1);
+
+namespace Sseidelmann\JunitConverterTests\Factories;
+
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
+use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
+use Sseidelmann\JunitConverter\Converters\GnuConverter;
+use Sseidelmann\JunitConverter\Converters\SonarqubeConverter;
+use Sseidelmann\JunitConverter\Factories\ConverterFactory;
+use Sseidelmann\JunitConverterTests\Helper\ConverterTestCase;
+
+class ConverterFactoryTest extends TestCase
+{
+    private function loadAsset(string $asset): string {
+        $filePath = dirname(__FILE__) . '/../assets/' . $asset;
+
+        return file_get_contents($filePath);
+    }
+
+    #[Test]
+    public function itGuessesTheCheckstyleConverter(): void {
+        $converterFactory = new ConverterFactory();
+
+        $converter = $converterFactory->guessConverter(
+            $this->loadAsset('checkstyle.xml')
+        );
+
+        $this->assertInstanceOf(CheckstyleConverter::class, $converter);
+    }
+
+    #[Test]
+    public function itGuessesTheSonarqubeConverter(): void {
+        $converterFactory = new ConverterFactory();
+
+        $converter = $converterFactory->guessConverter(
+            $this->loadAsset('docker_sonarqube.json')
+        );
+
+        $this->assertInstanceOf(SonarqubeConverter::class, $converter);
+    }
+
+    #[Test]
+    public function itGuessesTheGnuConverter(): void {
+        $converterFactory = new ConverterFactory();
+
+        $converter = $converterFactory->guessConverter(
+            $this->loadAsset('gnu.txt')
+        );
+
+        $this->assertInstanceOf(GnuConverter::class, $converter);
+    }
+}
