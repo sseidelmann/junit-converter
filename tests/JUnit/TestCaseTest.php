@@ -30,17 +30,4 @@ class TestCaseTest extends TestCase
 
         $this->assertCount(1, $testCase->getFailures());
     }
-
-    #[Test]
-    public function itAddsTheFailuresCasesToTheStorage(): void {
-        $junit = new JUnit();
-
-        $testsuite = $junit->testSuite('my_testsuite');
-
-        $testCase = $testsuite->testCase('my_testcase');
-
-        $testCase->addFailure(new Failure('type', 'message'));
-
-        $this->assertCount(1, $testCase->getFailures());
-    }
 }
