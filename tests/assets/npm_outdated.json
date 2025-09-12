@@ -1,0 +1,117 @@
+{
+  "@angular/animations": {
+    "wanted": "14.3.0",
+    "latest": "19.2.15",
+    "dependent": "angular-app"
+  },
+  "@angular/cdk": {
+    "wanted": "14.2.7",
+    "latest": "20.2.3",
+    "dependent": "angular-app"
+  },
+  "@angular/common": {
+    "wanted": "14.3.0",
+    "latest": "19.2.15",
+    "dependent": "angular-app"
+  },
+  "@angular/compiler": {
+    "wanted": "14.3.0",
+    "latest": "19.2.15",
+    "dependent": "angular-app"
+  },
+  "@angular/core": {
+    "wanted": "14.3.0",
+    "latest": "19.2.15",
+    "dependent": "angular-app"
+  },
+  "@angular/forms": {
+    "wanted": "14.3.0",
+    "latest": "19.2.15",
+    "dependent": "angular-app"
+  },
+  "@angular/material": {
+    "wanted": "14.2.7",
+    "latest": "20.2.3",
+    "dependent": "angular-app"
+  },
+  "@angular/platform-browser": {
+    "wanted": "14.3.0",
+    "latest": "19.2.15",
+    "dependent": "angular-app"
+  },
+  "@angular/platform-browser-dynamic": {
+    "wanted": "14.3.0",
+    "latest": "19.2.15",
+    "dependent": "angular-app"
+  },
+  "@angular/platform-server": {
+    "wanted": "14.3.0",
+    "latest": "19.2.15",
+    "dependent": "angular-app"
+  },
+  "@angular/router": {
+    "wanted": "14.3.0",
+    "latest": "19.2.15",
+    "dependent": "angular-app"
+  },
+  "@types/lodash": {
+    "wanted": "4.17.20",
+    "latest": "4.17.20",
+    "dependent": "angular-app"
+  },
+  "bootstrap": {
+    "wanted": "5.3.8",
+    "latest": "5.3.8",
+    "dependent": "angular-app"
+  },
+  "color": {
+    "wanted": "4.2.3",
+    "latest": "5.0.0",
+    "dependent": "angular-app"
+  },
+  "html-format": {
+    "wanted": "1.1.7",
+    "latest": "1.1.7",
+    "dependent": "angular-app"
+  },
+  "jquery": {
+    "wanted": "3.7.1",
+    "latest": "3.7.1",
+    "dependent": "angular-app"
+  },
+  "moment": {
+    "wanted": "2.30.1",
+    "latest": "2.30.1",
+    "dependent": "angular-app"
+  },
+  "oidc-client": {
+    "wanted": "1.11.5",
+    "latest": "1.11.5",
+    "dependent": "angular-app"
+  },
+  "popper.js": {
+    "wanted": "1.16.1",
+    "latest": "1.16.1",
+    "dependent": "angular-app"
+  },
+  "run-script-os": {
+    "wanted": "1.1.6",
+    "latest": "1.1.6",
+    "dependent": "angular-app"
+  },
+  "rxjs": {
+    "wanted": "7.8.2",
+    "latest": "7.8.2",
+    "dependent": "angular-app"
+  },
+  "tslib": {
+    "wanted": "2.8.1",
+    "latest": "2.8.1",
+    "dependent": "angular-app"
+  },
+  "zone.js": {
+    "wanted": "0.11.8",
+    "latest": "0.15.1",
+    "dependent": "angular-app"
+  }
+}
