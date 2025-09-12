@@ -95,6 +95,15 @@ class JUnit
     }
 
     /**
+     * Returns the testsuites.
+     *
+     * @return TestSuite[]
+     */
+    public function getTestSuites(): array {
+        return $this->testSuites;
+    }
+
+    /**
      * Renders the string representation of the JUnit file.
      *
      * @return string

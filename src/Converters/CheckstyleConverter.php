@@ -1,4 +1,13 @@
 <?php
+/**
+ * @project Junit Converter
+ * @file CheckstyleConverter.php
+ * @author Sebastian Seidelmann
+ * @copyright 2025 Sebastian Seidelmann
+ * @license MIT
+ */
+
+declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\Converters;
 
@@ -6,8 +15,6 @@ use DOMElement;
 use DOMXPath;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
-use Sseidelmann\JunitConverter\JUnit\TestCase;
-use Sseidelmann\JunitConverter\JUnit\TestSuite;
 
 class CheckstyleConverter extends AbstractConverter implements ConverterInterface
 {
@@ -15,7 +22,6 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
     {
         return 'checkstyle';
     }
-
 
     public function isReport(): bool
     {
@@ -40,41 +46,44 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
 
         $junit = new JUnit();
 
-        $testSuite = new TestSuite("checkstyle");
+        $testSuite = $junit->testSuite("checkstyle");
 
         $files = $xpath->query('file', $checkstyle);
         /** @var DOMElement $file */
         foreach ($files as $file) {
             $fileName = $file->getAttribute('name');
 
-            $testCase = new TestCase($fileName);
-
             $errors = $xpath->query('error', $file);
+
+            $errorsByLine = [];
             foreach ($errors as $error) {
                 $line = $error->getAttribute('line');
-                $column = $error->getAttribute('column');
-                $severity = $error->getAttribute('severity');
-                $message = $error->getAttribute('message');
-                $source = $error->getAttribute('source');
-
-                $testCase->addFailure(Failure::Generic(
-                    $severity,
-                    $source,
-                    sprintf(
-                        '%1$s in %2$s on line %3$s column %4$s',
-                        $message,
-                        $fileName,
-                        $line,
-                        $column
-                    )
-                ));
+                $errorsByLine[$line][] = $error;
             }
 
-            $testSuite->addTestCase($testCase);
+            foreach ($errorsByLine as $line => $errors) {
+                $testCase = $testSuite->testCase($fileName, $line);
+
+
+                foreach ($errors as $error) {
+                    $column = $error->getAttribute('column');
+                    $severity = $error->getAttribute('severity');
+                    $message = $error->getAttribute('message');
+                    $source = $error->getAttribute('source');
+
+                    $testCase->addFailure(Failure::Generic(
+                        $severity,
+                        $source,
+                        sprintf(
+                            '%1$s in %2$s on column %3$s',
+                            $message,
+                            $fileName,
+                            $column
+                        )
+                    ));
+            }
+            }
         }
-
-        $junit->addTestSuite($testSuite);
-
 
         return $junit;
     }

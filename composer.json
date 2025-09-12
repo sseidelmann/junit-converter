@@ -12,7 +12,8 @@
   "require": {
     "symfony/console": "*",
     "ext-dom": "*",
-    "softcreatr/jsonpath": "*"
+    "softcreatr/jsonpath": "*",
+    "phpunit/phpunit": "*"
   },
   "bin": [
     "bin/junit-converter"
@@ -20,6 +21,11 @@
   "autoload": {
     "psr-4": {
       "\\Sseidelmann\\JunitConverter\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "\\Sseidelmann\\JunitConverterTests\\": "tests/"
     }
   }
 }

@@ -1,4 +1,13 @@
 <?php
+/**
+ * @project Junit Converter
+ * @file TestSuite.php
+ * @author Sebastian Seidelmann
+ * @copyright 2025 Sebastian Seidelmann
+ * @license MIT
+ */
+
+declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\JUnit;
 
@@ -25,8 +34,8 @@ class TestSuite
         return $this;
     }
 
-    public function testCase(string $name) : TestCase {
-        $testCase = new TestCase($name);
+    public function testCase(string $name, int $line = 0) : TestCase {
+        $testCase = new TestCase($name, $line);
 
         $this->addTestCase($testCase);
 
