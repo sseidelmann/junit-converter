@@ -1,21 +1,50 @@
 <?php
+/**
+ * @project Junit Converter
+ * @file JUnit.php
+ * @author Sebastian Seidelmann
+ * @copyright 2025 Sebastian Seidelmann
+ * @license MIT
+ */
+
+declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\JUnit;
 
+/**
+ * JUNIT Representation
+ * @see https://github.com/testmoapp/junitxml
+ */
 class JUnit
 {
-
     /**
+     * Saves the test suites.
+     *
      * @var TestSuite[]
      */
-    private $testSuites = [];
+    private array $testSuites = [];
 
-    public function addTestSuite(TestSuite $testSuite): JUnit
+    /**
+     * Adds the test suite.
+     *
+     * @param TestSuite $testSuite the name of the testsuite
+     *
+     * @return $this
+     */
+    private function addTestSuite(TestSuite $testSuite): JUnit
     {
         $this->testSuites[] = $testSuite;
+
         return $this;
     }
 
+    /**
+     * Creates a new test suite.
+     *
+     * @param string $name the name of the testsuite
+     *
+     * @return TestSuite
+     */
     public function testSuite(string $name): TestSuite {
         $testSuite = new TestSuite($name);
 
@@ -24,6 +53,11 @@ class JUnit
         return $testSuite;
     }
 
+    /**
+     * Checks if the testsuite has fauilures
+     *
+     * @return bool
+     */
     public function hasFailures(): bool
     {
         if (empty($this->testSuites)) {
@@ -39,6 +73,13 @@ class JUnit
         return false;
     }
 
+    /**
+     * Renders the XML.
+     *
+     * @return \DOMDocument
+     *
+     * @throws \DOMException
+     */
     public function toXML(): \DOMDocument
     {
         $document = new \DOMDocument('1.0', 'utf-8');
@@ -53,6 +94,13 @@ class JUnit
         return $document;
     }
 
+    /**
+     * Renders the string representation of the JUnit file.
+     *
+     * @return string
+     *
+     * @throws \DOMException
+     */
     public function __toString()
     {
         return $this->toXML()->saveXML();
