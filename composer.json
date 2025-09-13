@@ -1,18 +1,19 @@
 {
   "name": "sseidelmann/junit-converter",
-  "description": "description",
+  "description": "Converter for several formats to junit",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "sebastianseidelmann",
-      "email": "email@example.com"
+      "email": "sebastian.seidelmann@gmail.com"
     }
   ],
   "require": {
     "symfony/console": "*",
-    "ext-dom": "*",
-    "softcreatr/jsonpath": "*",
+    "ext-dom": "*"
+  },
+  "require-dev": {
     "phpunit/phpunit": "*"
   },
   "bin": [
