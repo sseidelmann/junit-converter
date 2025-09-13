@@ -18,7 +18,7 @@ use Sseidelmann\JunitConverter\JUnit\JUnit;
 /**
  * Converter for handling outdated npm packages.
  */
-class NpmOutdatedJson extends AbstractConverter implements ConverterInterface
+class NpmOutdatedJsonConverter extends AbstractConverter implements ConverterInterface
 {
     /**
      * Saves the converted data.

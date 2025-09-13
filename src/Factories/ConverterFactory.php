@@ -6,7 +6,7 @@ use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\Converters\DotnetPackageListJsonConverter;
 use Sseidelmann\JunitConverter\Converters\GnuConverter;
-use Sseidelmann\JunitConverter\Converters\NpmOutdatedJson;
+use Sseidelmann\JunitConverter\Converters\NpmOutdatedJsonConverter;
 use Sseidelmann\JunitConverter\Converters\SonarqubeConverter;
 
 class ConverterFactory
@@ -16,7 +16,7 @@ class ConverterFactory
         CheckstyleConverter::class,
         SonarqubeConverter::class,
         GnuConverter::class,
-        NpmOutdatedJson::class,
+        NpmOutdatedJsonConverter::class,
         DotnetPackageListJsonConverter::class
     ];
 
