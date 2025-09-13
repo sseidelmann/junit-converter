@@ -1,6 +1,9 @@
 # junit-converter
 
 [![Status des Workflows](https://img.shields.io/github/actions/workflow/status/sseidelmann/junit-converter/main.yml?branch=main)](https://github.com/sseidelmann/junit-converter/actions)
+![Packagist Version](https://img.shields.io/packagist/v/sseidelmann/junit-converter)
+![Packagist Stars](https://img.shields.io/packagist/stars/sseidelmann/junit-converter)
+
 
 Ein PHP-Tool zur Konvertierung verschiedener Testausgabeformate in das JUnit-XML Format.
 
