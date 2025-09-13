@@ -12,18 +12,26 @@ declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\Converters;
 
-use DOMDocument;
-use DOMElement;
-use DOMXPath;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
-use Sseidelmann\JunitConverter\JUnit\TestCase;
-use Sseidelmann\JunitConverter\JUnit\TestSuite;
 
+/**
+ * Converter for handling outdated npm packages.
+ */
 class NpmOutdatedJson extends AbstractConverter implements ConverterInterface
 {
+    /**
+     * Saves the converted data.
+     *
+     * @var array
+     */
     private array $data;
 
+    /**
+     * Returns the name.
+     *
+     * @return string
+     */
     public function getName(): string
     {
         return 'npm_outdated';
