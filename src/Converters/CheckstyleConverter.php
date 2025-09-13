@@ -44,7 +44,7 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
         $xpath = new DOMXPath($dom);
         $checkstyle = $xpath->query("//checkstyle")->item(0);
 
-        $junit = new JUnit();
+        $junit = $this->createJunit();
 
         $testSuite = $junit->testSuite("checkstyle");
 
