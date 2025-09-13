@@ -55,6 +55,43 @@ $ npm outdated --json
 }
 ```
 
+#### Dotnet packages (json)
+```
+$ dotnet package list --vulnerable --project <path-to-csproj> --format json
+
+{
+  "version": 1,
+  "parameters": "--outdated",
+  "sources": [
+    "https://api.nuget.org/v3/index.json"
+  ],
+  "projects": [
+    {
+      "path": "/path/to/project.csproj",
+      "frameworks": [
+        {
+          "framework": "net8.0",
+          "topLevelPackages": [
+            {
+              "id": "Microsoft.Extensions.DependencyInjection",
+              "requestedVersion": "8.0.1",
+              "resolvedVersion": "8.0.1",
+              "latestVersion": "9.0.9"
+            },
+            {
+              "id": "Microsoft.Extensions.Http",
+              "requestedVersion": "8.0.1",
+              "resolvedVersion": "8.0.1",
+              "latestVersion": "9.0.9"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 ## Anforderungen
 
 - PHP 8.3 oder höher

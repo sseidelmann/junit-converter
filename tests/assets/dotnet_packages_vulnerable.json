@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "parameters": "--vulnerable",
+  "sources": [
+    "https://api.nuget.org/v3/index.json",
+    "https://baget.vpn.nrg-online.com/v3/index.json"
+  ],
+  "projects": [
+    {
+      "path": "/Users/sebastianseidelmann/workspace/message-processing/Service/Service.csproj"
+    }
+  ]
+}

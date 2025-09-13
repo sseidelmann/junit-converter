@@ -4,6 +4,7 @@ namespace Sseidelmann\JunitConverter\Factories;
 
 use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
+use Sseidelmann\JunitConverter\Converters\DotnetPackageListJsonConverter;
 use Sseidelmann\JunitConverter\Converters\GnuConverter;
 use Sseidelmann\JunitConverter\Converters\NpmOutdatedJson;
 use Sseidelmann\JunitConverter\Converters\SonarqubeConverter;
@@ -15,7 +16,8 @@ class ConverterFactory
         CheckstyleConverter::class,
         SonarqubeConverter::class,
         GnuConverter::class,
-        NpmOutdatedJson::class
+        NpmOutdatedJson::class,
+        DotnetPackageListJsonConverter::class
     ];
 
     public function guessConverter(string $input): ?ConverterInterface {

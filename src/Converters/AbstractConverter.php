@@ -13,6 +13,7 @@ namespace Sseidelmann\JunitConverter\Converters;
 
 use Sseidelmann\JunitConverter\Converters\Traits\JsonConverterTrait;
 use Sseidelmann\JunitConverter\Converters\Traits\XmlConverterTrait;
+use Sseidelmann\JunitConverter\JUnit\JUnit;
 
 class AbstractConverter
 {
@@ -42,5 +43,14 @@ class AbstractConverter
      */
     protected function getInput(): string {
         return $this->input;
+    }
+
+    /**
+     * Creates a fresh instance of the junit.
+     *
+     * @return JUnit
+     */
+    protected function createJunit(): JUnit {
+        return new JUnit();
     }
 }
