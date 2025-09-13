@@ -37,7 +37,11 @@ class DotnetPackageListJsonConverter extends AbstractConverter implements Conver
         return 'npm_outdated';
     }
 
-
+    /**
+     * Checks if the report is valid.
+     *
+     * @return bool
+     */
     public function isReport(): bool
     {
         if ($this->isJson($this->getInput())) {
@@ -52,6 +56,11 @@ class DotnetPackageListJsonConverter extends AbstractConverter implements Conver
         return false;
     }
 
+    /**
+     * Converts the dotnet package output to junit format
+     *
+     * @return JUnit
+     */
     public function convert(): Junit
     {
         $junit = $this->createJunit();
