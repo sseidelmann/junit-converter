@@ -107,6 +107,12 @@ composer install
 ./vendor/bin/phpunit
 ``` 
 
+## PHP Codestyle
+```
+composer install
+./vendor/bin/php-cs-fixer fix --allow-risky=yes
+```
+
 ## Lizenz
 
 Dieses Projekt steht unter der MIT-Lizenz. Siehe [LICENSE](LICENSE) Datei für Details.
