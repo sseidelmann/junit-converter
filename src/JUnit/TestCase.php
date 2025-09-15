@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project Junit Converter
  * @file TestCase.php
@@ -40,8 +41,7 @@ class TestCase
      * @param string $name the name of the testcase
      * @param int    $line the line of the testcase
      */
-    public function __construct(string $name, int $line = 0)
-    {
+    public function __construct(string $name, int $line = 0) {
         $this->name = $name;
         $this->line = $line;
     }
@@ -53,9 +53,9 @@ class TestCase
      *
      * @return $this
      */
-    public function addFailure(Failure $failure): TestCase
-    {
+    public function addFailure(Failure $failure): TestCase {
         $this->failures[] = $failure;
+
         return $this;
     }
 
@@ -64,8 +64,7 @@ class TestCase
      *
      * @return array
      */
-    public function getFailures(): array
-    {
+    public function getFailures(): array {
         return $this->failures;
     }
 
@@ -78,10 +77,10 @@ class TestCase
      *
      * @throws \DOMException
      */
-    public function toXML(\DOMDocument $document): \DOMNode
-    {
+    public function toXML(\DOMDocument $document): \DOMNode {
         $node = $document->createElement('testcase');
         $node->setAttribute('name', $this->name);
+
         if ($this->line != 0) {
             $node->setAttribute('line', (string) $this->line);
         }

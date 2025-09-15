@@ -14,7 +14,8 @@
     "ext-dom": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "*"
+    "phpunit/phpunit": "*",
+    "friendsofphp/php-cs-fixer": "^3.87"
   },
   "bin": [
     "bin/junit-converter"

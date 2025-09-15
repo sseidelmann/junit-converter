@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project Junit Converter
  * @file JunitTests.php
@@ -40,7 +41,6 @@ final class JunitTest extends TestCase
 
         $this->assertFalse($junit->hasFailures());
     }
-
 
     #[Test]
     public function itAddsTheFailureCount(): void {

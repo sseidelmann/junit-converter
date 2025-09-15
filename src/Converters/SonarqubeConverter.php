@@ -2,26 +2,18 @@
 
 namespace Sseidelmann\JunitConverter\Converters;
 
-use DOMDocument;
-use DOMElement;
-use DOMXPath;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
-use Sseidelmann\JunitConverter\JUnit\TestCase;
-use Sseidelmann\JunitConverter\JUnit\TestSuite;
-use Sseidelmann\JunitConverter\Utils\JsonAbstractTraversableElement;
 
 class SonarqubeConverter extends AbstractConverter implements ConverterInterface
 {
-    public function getName(): string
-    {
+    public function getName(): string {
         return 'sonarqube';
     }
 
     private array $data = [];
 
-    public function isReport(): bool
-    {
+    public function isReport(): bool {
         if ($this->isJson($this->getInput())) {
             $this->data = json_decode($this->getInput(), true);
 
@@ -31,8 +23,7 @@ class SonarqubeConverter extends AbstractConverter implements ConverterInterface
         return false;
     }
 
-    public function convert(): Junit
-    {
+    public function convert(): Junit {
         $junit = new JUnit();
         $testSuite = $junit->testSuite('sonarqube');
 

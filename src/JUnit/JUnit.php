@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project Junit Converter
  * @file JUnit.php
@@ -31,8 +32,7 @@ class JUnit
      *
      * @return $this
      */
-    private function addTestSuite(TestSuite $testSuite): JUnit
-    {
+    private function addTestSuite(TestSuite $testSuite): JUnit {
         $this->testSuites[] = $testSuite;
 
         return $this;
@@ -58,8 +58,7 @@ class JUnit
      *
      * @return bool
      */
-    public function hasFailures(): bool
-    {
+    public function hasFailures(): bool {
         foreach ($this->testSuites as $testSuite) {
             if ($testSuite->getFailureCount() > 0) {
                 return true;
@@ -76,8 +75,7 @@ class JUnit
      *
      * @throws \DOMException
      */
-    public function toXML(): \DOMDocument
-    {
+    public function toXML(): \DOMDocument {
         $document = new \DOMDocument('1.0', 'utf-8');
         $document->formatOutput = true;
 
@@ -87,6 +85,7 @@ class JUnit
         foreach ($this->testSuites as $testSuite) {
             $testSuites->appendChild($testSuite->toXML($document));
         }
+
         return $document;
     }
 
@@ -106,8 +105,7 @@ class JUnit
      *
      * @throws \DOMException
      */
-    public function __toString()
-    {
+    public function __toString() {
         return $this->toXML()->saveXML();
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project Junit Converter
  * @file NpmOutdatedJson.php
@@ -8,7 +9,6 @@
  */
 
 declare(strict_types=1);
-
 
 namespace Sseidelmann\JunitConverter\Converters;
 
@@ -32,21 +32,18 @@ class NpmOutdatedJsonConverter extends AbstractConverter implements ConverterInt
      *
      * @return string
      */
-    public function getName(): string
-    {
+    public function getName(): string {
         return 'npm_outdated';
     }
 
-
-    public function isReport(): bool
-    {
+    public function isReport(): bool {
         if ($this->isJson($this->getInput())) {
             $this->data = json_decode($this->getInput(), true);
 
             foreach ($this->data as $outdatedInformation) {
-                if (!isset($outdatedInformation['wanted']) ||
-                    !isset($outdatedInformation['latest']) ||
-                    !isset($outdatedInformation['dependent'])) {
+                if (! isset($outdatedInformation['wanted']) ||
+                    ! isset($outdatedInformation['latest']) ||
+                    ! isset($outdatedInformation['dependent'])) {
                     return false;
                 }
             }
@@ -57,13 +54,13 @@ class NpmOutdatedJsonConverter extends AbstractConverter implements ConverterInt
         return false;
     }
 
-    public function convert(): Junit
-    {
+    public function convert(): Junit {
         $junit = new JUnit();
 
         $testSuite = $junit->testSuite("npm_outdated");
 
         $testCase = $testSuite->testCase('package.json');
+
         foreach ($this->data as $package => $outdatedInformation) {
             if ($outdatedInformation['wanted'] != $outdatedInformation['latest']) {
                 $testCase->addFailure(Failure::Warning(

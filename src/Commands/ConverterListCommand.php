@@ -4,28 +4,24 @@ namespace Sseidelmann\JunitConverter\Commands;
 
 use Sseidelmann\JunitConverter\Factories\ConverterFactory;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ConverterListCommand extends Command
 {
-
     /**
      * Saves the converter
      * @var ConverterFactory
      */
     private ConverterFactory $converterFactory;
 
-    public function __construct(ConverterFactory $converterFactory)
-    {
+    public function __construct(ConverterFactory $converterFactory) {
         parent::__construct();
 
         $this->converterFactory = $converterFactory;
     }
 
-    protected function configure()
-    {
+    protected function configure() {
         $this
             ->setName('convert:list')
             ->setDescription(
@@ -34,9 +30,7 @@ class ConverterListCommand extends Command
         ;
     }
 
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
+    protected function execute(InputInterface $input, OutputInterface $output): int {
         $converters = $this->converterFactory->getConverter();
 
         foreach ($converters as $converter) {

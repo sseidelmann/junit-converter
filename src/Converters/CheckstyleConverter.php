@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project Junit Converter
  * @file CheckstyleConverter.php
@@ -18,13 +19,11 @@ use Sseidelmann\JunitConverter\JUnit\JUnit;
 
 class CheckstyleConverter extends AbstractConverter implements ConverterInterface
 {
-    public function getName(): string
-    {
+    public function getName(): string {
         return 'checkstyle';
     }
 
-    public function isReport(): bool
-    {
+    public function isReport(): bool {
         if ($this->isXml($this->getInput())) {
             $dom = $this->loadXml($this->getInput());
 
@@ -37,8 +36,7 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
         return false;
     }
 
-    public function convert(): Junit
-    {
+    public function convert(): Junit {
         $dom = $this->loadXml($this->getInput());
 
         $xpath = new DOMXPath($dom);
@@ -49,6 +47,7 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
         $testSuite = $junit->testSuite("checkstyle");
 
         $files = $xpath->query('file', $checkstyle);
+
         /** @var DOMElement $file */
         foreach ($files as $file) {
             $fileName = $file->getAttribute('name');
@@ -56,6 +55,7 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
             $errors = $xpath->query('error', $file);
 
             $errorsByLine = [];
+
             foreach ($errors as $error) {
                 $line = $error->getAttribute('line');
                 $errorsByLine[$line][] = $error;
@@ -81,7 +81,7 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
                             $column
                         )
                     ));
-            }
+                }
             }
         }
 

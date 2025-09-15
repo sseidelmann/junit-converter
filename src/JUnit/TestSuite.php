@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project Junit Converter
  * @file TestSuite.php
@@ -32,8 +33,7 @@ class TestSuite
      *
      * @param string $name
      */
-    public function __construct(string $name)
-    {
+    public function __construct(string $name) {
         $this->name = $name;
     }
 
@@ -42,8 +42,7 @@ class TestSuite
      * @param TestCase $testCase
      * @return $this
      */
-    private function addTestCase(TestCase $testCase): TestSuite
-    {
+    private function addTestCase(TestCase $testCase): TestSuite {
         $this->testCases[] = $testCase;
 
         return $this;
@@ -57,7 +56,7 @@ class TestSuite
      *
      * @return TestCase
      */
-    public function testCase(string $name, int $line = 0) : TestCase {
+    public function testCase(string $name, int $line = 0): TestCase {
         $testCase = new TestCase($name, $line);
 
         $this->addTestCase($testCase);
@@ -70,8 +69,7 @@ class TestSuite
      *
      * @return int
      */
-    public function getFailureCount(): int
-    {
+    public function getFailureCount(): int {
         $total = 0;
 
         foreach ($this->testCases as $testCase) {
@@ -90,8 +88,7 @@ class TestSuite
      *
      * @throws \DOMException
      */
-    public function toXML(\DOMDocument $document): \DOMNode
-    {
+    public function toXML(\DOMDocument $document): \DOMNode {
         $node = $document->createElement('testsuite');
         $node->setAttribute('name', $this->name);
         $node->setAttribute('failures', (string) $this->getFailureCount());

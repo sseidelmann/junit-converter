@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project Junit Converter
  * @file NpmOutdatedJson.php
@@ -8,7 +9,6 @@
  */
 
 declare(strict_types=1);
-
 
 namespace Sseidelmann\JunitConverter\Converters;
 
@@ -32,8 +32,7 @@ class DotnetPackageListJsonConverter extends AbstractConverter implements Conver
      *
      * @return string
      */
-    public function getName(): string
-    {
+    public function getName(): string {
         return 'npm_outdated';
     }
 
@@ -42,8 +41,7 @@ class DotnetPackageListJsonConverter extends AbstractConverter implements Conver
      *
      * @return bool
      */
-    public function isReport(): bool
-    {
+    public function isReport(): bool {
         if ($this->isJson($this->getInput())) {
             $this->data = json_decode($this->getInput(), true);
 
@@ -61,20 +59,23 @@ class DotnetPackageListJsonConverter extends AbstractConverter implements Conver
      *
      * @return JUnit
      */
-    public function convert(): Junit
-    {
+    public function convert(): Junit {
         $junit = $this->createJunit();
 
         $testSuite = $junit->testSuite("dotnet_packages");
 
         $type = 'unknown';
+
         switch ($this->data['parameters']) {
-            case '--outdated': $type='outdated'; break;
-            case '--vulnerable': $type='vulnerable'; break;
+            case '--outdated': $type = 'outdated';
+                break;
+            case '--vulnerable': $type = 'vulnerable';
+                break;
         }
 
         foreach ($this->data['projects'] as $project) {
             $testCase = $testSuite->testCase($project['path']);
+
             foreach ($project['frameworks'] as $framework) {
                 foreach ($framework['topLevelPackages'] as $topLevelPackage) {
                     if ($topLevelPackage['requestedVersion'] != $topLevelPackage['latestVersion']) {

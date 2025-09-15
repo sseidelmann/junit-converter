@@ -10,22 +10,19 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ConvertCommand extends Command
 {
-
     /**
      * Saves the converter
      * @var ConverterFactory
      */
     private ConverterFactory $converterFactory;
 
-    public function __construct(ConverterFactory $converterFactory)
-    {
+    public function __construct(ConverterFactory $converterFactory) {
         parent::__construct();
 
         $this->converterFactory = $converterFactory;
     }
 
-    protected function configure()
-    {
+    protected function configure() {
         $this
             ->setName('convert')
             ->setDescription(
@@ -38,9 +35,7 @@ class ConvertCommand extends Command
             );
     }
 
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
+    protected function execute(InputInterface $input, OutputInterface $output): int {
         $report = $this->readStdIn();
 
         if (strlen($report) === 0) {
@@ -50,6 +45,7 @@ class ConvertCommand extends Command
 
         if (strlen($report) === 0) {
             echo "no input";
+
             return 1;
         }
 
@@ -64,7 +60,7 @@ class ConvertCommand extends Command
         return 0;
     }
 
-    private function readStdIn(): string{
+    private function readStdIn(): string {
         // Read from stdin
         $stdin = stream_get_contents(STDIN);
 

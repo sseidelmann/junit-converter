@@ -11,13 +11,13 @@ use Sseidelmann\JunitConverter\Converters\SonarqubeConverter;
 
 class ConverterFactory
 {
-    /** @var ConverterInterface[] $converters */
+    /** @var ConverterInterface[] */
     private array $converters = [
         CheckstyleConverter::class,
         SonarqubeConverter::class,
         GnuConverter::class,
         NpmOutdatedJsonConverter::class,
-        DotnetPackageListJsonConverter::class
+        DotnetPackageListJsonConverter::class,
     ];
 
     public function guessConverter(string $input): ?ConverterInterface {
@@ -36,6 +36,8 @@ class ConverterFactory
      * @return ConverterInterface[]
      */
     public function getConverter(): array {
-        return array_map(function ($class) {return new $class('');}, $this->converters);
+        return array_map(function ($class) {
+            return new $class('');
+        }, $this->converters);
     }
 }

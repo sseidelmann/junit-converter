@@ -41,8 +41,7 @@ class Failure
         return self::Generic('info', $message, $description);
     }
 
-    public function toXML(\DOMDocument $document): \DOMNode
-    {
+    public function toXML(\DOMDocument $document): \DOMNode {
         $node = $document->createElement('failure', $this->description);
         $node->setAttribute('type', $this->type);
         $node->setAttribute('message', $this->message);

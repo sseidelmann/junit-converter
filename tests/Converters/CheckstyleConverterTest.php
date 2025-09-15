@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project Junit Converter
  * @file CheckstyleConverterTest.php

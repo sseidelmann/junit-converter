@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project Junit Converter
  * @file TestCaseTest.php
@@ -13,7 +14,6 @@ namespace Sseidelmann\JunitConverterTests\JUnit;
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
 class TestSuiteTest extends TestCase
