@@ -10,6 +10,13 @@
 
 declare(strict_types=1);
 
+/*
+ * @project Junit Converter
+ * @author Sebastian Seidelmann
+ * @copyright 2025 Sebastian Seidelmann
+ * @license MIT
+ */
+
 namespace Sseidelmann\JunitConverterTests\Factories;
 
 use PHPUnit\Framework\Attributes\Test;

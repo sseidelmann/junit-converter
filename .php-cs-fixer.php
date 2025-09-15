@@ -39,5 +39,14 @@ return (new PhpCsFixer\Config())
             'keep_multiple_spaces_after_comma' => false,
         ],
         'single_trait_insert_per_statement' => true,
+        'header_comment' => [
+            'comment_type' => 'comment', // 'PHPDoc'
+            'location' => 'after_declare_strict', // 'after_open'
+            'header' => '@project Junit Converter
+@author Sebastian Seidelmann
+@copyright 2025 Sebastian Seidelmann
+@license MIT'
+        ],
+        'declare_strict_types' => true
     ])
     ->setFinder($finder);

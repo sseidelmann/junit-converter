@@ -1,14 +1,13 @@
 <?php
 
-/**
+declare(strict_types=1);
+
+/*
  * @project Junit Converter
- * @file TestCase.php
  * @author Sebastian Seidelmann
  * @copyright 2025 Sebastian Seidelmann
  * @license MIT
  */
-
-declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\JUnit;
 
