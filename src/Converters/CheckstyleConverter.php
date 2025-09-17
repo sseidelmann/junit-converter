@@ -63,15 +63,13 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
             }
 
             foreach ($errorsByLine as $source => $errors) {
-                $testCase = $testSuite->testCase(sprintf('Rule %s', $source));
-
-
                 foreach ($errors as $error) {
                     $line = $error->getAttribute('line');
                     $column = $error->getAttribute('column');
                     $severity = $error->getAttribute('severity');
                     $message = $error->getAttribute('message');
-                    $source = $error->getAttribute('source');
+
+                    $testCase = $testSuite->testCase(sprintf('Rule %s', $source), $line);
 
                     $failure = new Failure();
                     $failure
