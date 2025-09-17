@@ -64,7 +64,7 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
 
             foreach ($errorsByLine as $source => $errors) {
                 foreach ($errors as $error) {
-                    $line = $error->getAttribute('line');
+                    $line = (int) $error->getAttribute('line');
                     $column = $error->getAttribute('column');
                     $severity = $error->getAttribute('severity');
                     $message = $error->getAttribute('message');
