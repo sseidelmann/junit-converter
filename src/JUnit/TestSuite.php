@@ -28,6 +28,13 @@ class TestSuite
     private array $testCases = [];
 
     /**
+     * Saves the filename of the suite.
+     *
+     * @var string
+     */
+    private string $fileName;
+
+    /**
      * Default constructor
      *
      * @param string $name
@@ -42,6 +49,10 @@ class TestSuite
      * @return $this
      */
     private function addTestCase(TestCase $testCase): TestSuite {
+        if ($this->hasFilename()) {
+            $testCase->setFilename($this->getFilename());
+        }
+
         $this->testCases[] = $testCase;
 
         return $this;
@@ -77,6 +88,38 @@ class TestSuite
 
         return $total;
     }
+
+    /**
+     * Sets the filename for the testcase.
+     *
+     * @param string $fileName
+     *
+     * @return $this
+     */
+    public function setFilename(string $fileName): TestCase {
+        $this->fileName = $fileName;
+
+        return $this;
+    }
+
+    /**
+     * Returns the filename.
+     *
+     * @return string
+     */
+    public function getFilename(): string {
+        return $this->fileName;
+    }
+
+    /**
+     * Checks if a filename is configured.
+     *
+     * @return bool
+     */
+    public function hasFilename(): bool {
+        return !empty($this->fileName);
+    }
+
 
     /**
      * Returns the total count.

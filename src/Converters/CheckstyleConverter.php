@@ -43,13 +43,15 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
 
         $junit = $this->createJunit();
 
-        $testSuite = $junit->testSuite("checkstyle");
-
         $files = $xpath->query('file', $checkstyle);
 
         /** @var DOMElement $file */
         foreach ($files as $file) {
             $fileName = $file->getAttribute('name');
+
+            $testSuite = $junit->testSuite("checkstyle");
+            $testSuite->setFilename($fileName);
+
 
             $errors = $xpath->query('error', $file);
 
