@@ -79,6 +79,15 @@ class TestSuite
     }
 
     /**
+     * Returns the total count.
+     *
+     * @return int
+     */
+    public function getTestsCount(): int {
+        return count($this->testCases);
+    }
+
+    /**
      * Returns the xml representation of the suite.
      *
      * @param \DOMDocument $document The document
@@ -88,9 +97,15 @@ class TestSuite
      * @throws \DOMException
      */
     public function toXML(\DOMDocument $document): \DOMNode {
+        $testsCount = $this->getTestsCount();
+        $failureCount = $this->getFailureCount();
+
         $node = $document->createElement('testsuite');
         $node->setAttribute('name', $this->name);
-        $node->setAttribute('failures', (string) $this->getFailureCount());
+        $node->setAttribute('tests', (string) $testsCount);
+        $node->setAttribute('failures', (string) $failureCount);
+        $node->setAttribute('errors', '0');
+        $node->setAttribute('skipped', '0');
 
         foreach ($this->testCases as $testCase) {
             $node->appendChild($testCase->toXML($document));
