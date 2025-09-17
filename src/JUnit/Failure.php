@@ -29,13 +29,31 @@ class Failure
     private $description;
 
     public function __construct(
-        string $type,
-        string $message,
+        ?string $type = null,
+        ?string $message = null,
         ?string $description = null
     ) {
         $this->type = $type;
         $this->message = $message;
         $this->description = $description;
+    }
+
+    public function withType(string $type): self
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    public function withMessage(string $message): self
+    {
+        $this->message = $message;
+        return $this;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $this->description = $description;
+        return $this;
     }
 
     public static function Generic(string $severity, string $message, ?string $description = null) {
@@ -51,7 +69,7 @@ class Failure
     }
 
     public function toXML(\DOMDocument $document): \DOMNode {
-        $node = $document->createElement('failure', $this->description);
+        $node = $document->createElement('failure', $this->description ?? '');
         $node->setAttribute('type', $this->type);
         $node->setAttribute('message', $this->message);
 

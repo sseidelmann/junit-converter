@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite failures="1" name="gitleaks" tests="1" time="">
+        <testcase classname="Detected a Generic API Key, potentially exposing access to various services and sensitive operations." file="magic_link_sender/config_prod.ini" name="generic-api-key has detected a secret in file magic_link_sender/config_prod.ini, line 8." time="">
+            <failure message="generic-api-key has detected a secret in file magic_link_sender/config_prod.ini, line 8." type="Detected a Generic API Key, potentially exposing access to various services and sensitive operations.">{&#xA;&#x9;&#34;RuleID&#34;: &#34;generic-api-key&#34;,&#xA;&#x9;&#34;Description&#34;: &#34;Detected a Generic API Key, potentially exposing access to various services and sensitive operations.&#34;,&#xA;&#x9;&#34;StartLine&#34;: 8,&#xA;&#x9;&#34;EndLine&#34;: 8,&#xA;&#x9;&#34;StartColumn&#34;: 2,&#xA;&#x9;&#34;EndColumn&#34;: 28,&#xA;&#x9;&#34;Match&#34;: &#34;password = eM8GjlwIrLod4AZ8&#34;,&#xA;&#x9;&#34;Secret&#34;: &#34;eM8GjlwIrLod4AZ8&#34;,&#xA;&#x9;&#34;File&#34;: &#34;magic_link_sender/config_prod.ini&#34;,&#xA;&#x9;&#34;SymlinkFile&#34;: &#34;&#34;,&#xA;&#x9;&#34;Commit&#34;: &#34;&#34;,&#xA;&#x9;&#34;Entropy&#34;: 3.875,&#xA;&#x9;&#34;Author&#34;: &#34;&#34;,&#xA;&#x9;&#34;Email&#34;: &#34;&#34;,&#xA;&#x9;&#34;Date&#34;: &#34;&#34;,&#xA;&#x9;&#34;Message&#34;: &#34;&#34;,&#xA;&#x9;&#34;Tags&#34;: [],&#xA;&#x9;&#34;Fingerprint&#34;: &#34;magic_link_sender/config_prod.ini:generic-api-key:8&#34;&#xA;}</failure>
+        </testcase>
+    </testsuite>
+</testsuites>

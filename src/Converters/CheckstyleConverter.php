@@ -58,30 +58,32 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
             $errorsByLine = [];
 
             foreach ($errors as $error) {
-                $line = $error->getAttribute('line');
-                $errorsByLine[$line][] = $error;
+                $source = $error->getAttribute('source');
+                $errorsByLine[$source][] = $error;
             }
 
-            foreach ($errorsByLine as $line => $errors) {
-                $testCase = $testSuite->testCase($fileName, $line);
+            foreach ($errorsByLine as $source => $errors) {
+                $testCase = $testSuite->testCase(sprintf('Rule %s', $source));
+                $testCase
+                    ->withClassname($source)
+                ;
 
 
                 foreach ($errors as $error) {
+                    $line = $error->getAttribute('line');
                     $column = $error->getAttribute('column');
                     $severity = $error->getAttribute('severity');
                     $message = $error->getAttribute('message');
                     $source = $error->getAttribute('source');
 
-                    $testCase->addFailure(Failure::Generic(
-                        $severity,
-                        $source,
-                        sprintf(
-                            '%1$s in %2$s on column %3$s',
-                            $message,
-                            $fileName,
-                            $column
-                        )
-                    ));
+                    $failure = new Failure();
+                    $failure
+                        ->withType(sprintf('%s (%s)', $message, $source))
+                        ->withMessage(sprintf('%s, on line %s', $message, $line))
+                        ->withDescription(sprintf('%s %s', strtoupper($severity), $message))
+                    ;
+
+                    $testCase->addFailure($failure);
                 }
             }
         }

@@ -40,6 +40,7 @@ class TestCase
      * @var string
      */
     private string $fileName;
+    private string $classname;
 
     /**
      * Default constructor.
@@ -50,6 +51,11 @@ class TestCase
     public function __construct(string $name, int $line = 0) {
         $this->name = $name;
         $this->line = $line;
+    }
+
+    public function withClassname(string $classname): self {
+        $this->classname = $classname;
+        return $this;
     }
 
     /**
@@ -116,7 +122,7 @@ class TestCase
      */
     public function toXML(\DOMDocument $document): \DOMNode {
         $node = $document->createElement('testcase');
-        $node->setAttribute('name', sprintf('%s-%s', $this->name, $this->line));
+        $node->setAttribute('name', $this->name);
 
         if ($this->line != 0) {
             $node->setAttribute('line', (string) $this->line);
@@ -124,7 +130,11 @@ class TestCase
         $node->setAttribute('failures', (string) count($this->failures));
 
         if ($this->hasFilename()) {
-            $node->setAttribute('file', (string) $this->getFilename());
+            $node->setAttribute('file', $this->getFilename());
+        }
+
+        if (strlen($this->classname)) {
+            $node->setAttribute('classname', $this->classname);
         }
 
         foreach ($this->failures as $failure) {
