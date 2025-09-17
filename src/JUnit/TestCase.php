@@ -40,7 +40,7 @@ class TestCase
      * @var string
      */
     private string $fileName;
-    private string $classname;
+    private ?string $classname = null;
 
     /**
      * Default constructor.
