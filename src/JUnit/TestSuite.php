@@ -127,7 +127,7 @@ class TestSuite
      * @return int
      */
     public function getTestsCount(): int {
-        return count($this->testCases);
+        return $this->getFailureCount();
     }
 
     /**
