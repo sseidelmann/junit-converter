@@ -96,7 +96,7 @@ class TestSuite
      *
      * @return $this
      */
-    public function setFilename(string $fileName): TestCase {
+    public function setFilename(string $fileName): TestSuite {
         $this->fileName = $fileName;
 
         return $this;
