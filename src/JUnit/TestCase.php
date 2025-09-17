@@ -133,7 +133,7 @@ class TestCase
             $node->setAttribute('file', $this->getFilename());
         }
 
-        if (strlen($this->classname)) {
+        if ($this->classname && strlen($this->classname) > 0) {
             $node->setAttribute('classname', $this->classname);
         }
 
