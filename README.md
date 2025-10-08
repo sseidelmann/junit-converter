@@ -58,6 +58,22 @@ $ npm outdated --json
 }
 ```
 
+#### CSharpier (console)
+```
+$ csharpier csharpier check .
+
+Error ./Project/Project.csproj - Was not formatted.
+  ----------------------------- Expected: Around Line 2 -----------------------------
+  <Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <TargetFramework>net8.0</TargetFramework>
+  ----------------------------- Actual: Around Line 2 -----------------------------
+  <Project Sdk="Microsoft.NET.Sdk">
+  	<PropertyGroup>
+  		<TargetFramework>net8.0</TargetFramework>
+
+```
+
 #### Dotnet packages (json)
 ```
 $ dotnet package list --vulnerable --project <path-to-csproj> --format json
