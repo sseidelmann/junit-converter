@@ -1,0 +1,158 @@
+Error ./.run/SmartInsights_docker-compose.run.xml - Was not formatted.
+  The file did not end with a single newline.
+Error ./Logic/Logic.csproj - Was not formatted.
+  ----------------------------- Expected: Around Line 2 -----------------------------
+  <Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <TargetFramework>net8.0</TargetFramework>
+  ----------------------------- Actual: Around Line 2 -----------------------------
+  <Project Sdk="Microsoft.NET.Sdk">
+  	<PropertyGroup>
+  		<TargetFramework>net8.0</TargetFramework>
+
+Error ./test-reports/dotnet-dependencies.xml - Was not formatted.
+  The file did not end with a single newline.
+Error ./.run/SmartInsights_Dockerfile.run.xml - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Server.csproj - Was not formatted.
+  The file did not end with a single newline.
+Error ./.run/SmartInsights.run.xml - Was not formatted.
+  The file did not end with a single newline.
+Error ./NuGet.Config - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Shared.csproj - Was not formatted.
+  ----------------------------- Expected: Around Line 3 -----------------------------
+    <PropertyGroup>
+      <TargetFramework>net8.0</TargetFramework>
+      <Nullable>disable</Nullable>
+  ----------------------------- Actual: Around Line 3 -----------------------------
+    <PropertyGroup>
+  	  <TargetFramework>net8.0</TargetFramework>
+  	  <Nullable>disable</Nullable>
+
+Error ./Logic/Entities/ApiConnectionStrings.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Constants/ControllerGroupNames.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Logic/Interfaces/ITaskStatisticConverter.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Logic/Interfaces/IMessageProcessingService.cs - Was not formatted.
+  ----------------------------- Expected: Around Line 16 -----------------------------
+      /// </summary>
+      Task<CustomerMessage> GetNextCustomerMessageAsync(
+          int tenantId,
+  ----------------------------- Actual: Around Line 16 -----------------------------
+      /// </summary>
+      Task<CustomerMessage> GetNextCustomerMessageAsync(int tenantId, CancellationToken cancellationToken);
+
+
+Error ./Logic/Interfaces/INlpService.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Extensions/ServiceCollectionExtensions.cs - Was not formatted.
+  ----------------------------- Expected: Around Line 13 -----------------------------
+  {
+      /// <summary>
+      /// Adds the frontend services to the service collection.
+  ----------------------------- Actual: Around Line 13 -----------------------------
+  {
+
+      /// <summary>
+
+Error ./Logic/Business/MessageProcessingService.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/PriceController.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/PaymentController.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/SendMessageRequest.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Logic/Extensions/ServiceCollectionExtensions.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Logic/Business/TaskStatisticConverter.cs - Was not formatted.
+  ----------------------------- Expected: Around Line 11 -----------------------------
+  {
+      /// <inheritdoc />
+      public MessageStatistic[] ConvertToMessageStatistic(TaskStatistic[] statistics)
+  ----------------------------- Actual: Around Line 11 -----------------------------
+  {
+  ····
+      /// <inheritdoc />
+
+Error ./Server/Business/IIdentityHelper.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/IntentFilter.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/PaymentInformationController.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/CustomerController.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Logic/Business/NlpService.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Entities/IdentityServerAuthenticationSettings.cs - Was not formatted.
+  ----------------------------- Expected: Around Line 8 -----------------------------
+  {
+      #region Members
+
+  ----------------------------- Actual: Around Line 8 -----------------------------
+  {
+
+      #region Members
+
+Error ./Server/Entities/ControllerSettings.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/NerEntityGroup.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/NerEntity.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/ContractCancellationController.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/MessageProcessingController.cs - Was not formatted.
+  ----------------------------- Expected: Around Line 20 -----------------------------
+  {
+      #region Members
+
+  ----------------------------- Actual: Around Line 20 -----------------------------
+  {
+
+      #region Members
+
+Error ./Server/Controllers/NoteController.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/MonthlyPaymentController.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/NerIntent.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Program.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/MessagePreviewResponse.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/MessageCloseRequest.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/MessageResponeData.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/IntentWithCategory.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/MessageStatistic.cs - Was not formatted.
+  ----------------------------- Expected: Around Line 22 -----------------------------
+      public long SkipCount { get; init; }
+  }
+  ----------------------------- Actual: Around Line 22 -----------------------------
+      public long SkipCount { get; init; }
+
+  }
+
+Error ./Shared/Entities/AssignedToFilter.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/MessagePreview.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Shared/Entities/Message.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/MeterReadingController.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/MagicKeyController.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/OrderController.cs - Was not formatted.
+  The file did not end with a single newline.
+Error ./Server/Controllers/MessageController.cs - Was not formatted.
+  The file did not end with a single newline.
+Checked 47 files in 1673ms.

@@ -27,9 +27,14 @@ class GnuConverter extends AbstractConverter implements ConverterInterface
         if (! $this->isJson($this->getInput()) && ! $this->isXml($this->getInput())) {
             // <Tool>:<Datei>:<Zeile>:<Regel-ID> <Schwere>:<Beschreibung>
             $this->matches = [];
-            preg_match_all("/(?<tool>[^\:]+)\:(?<file>[^\:]+)\:(?<line>[^\:]+)\:\s?(?<rule>[^\s]+)\s(?<severity>[^\:]+)\:\s?(?<message>.+)/m", $this->getInput(), $this->matches);
+            $pattern = "(?<tool>[^\:]+)\:(?<file>[^\:]+)\:(?<line>[^\:]+)\:\s?(?<rule>[^\s]+)\s(?<severity>[^\:]+)\:\s?(?<message>.+)";
+            $lines = explode(PHP_EOL, $this->getInput());
+            if (preg_match(sprintf("/%s/", $pattern), $lines[0])) {
+                preg_match_all(sprintf("/%s/m",$pattern), $this->getInput(), $this->matches);
 
-            return count($this->matches[0]) > 0;
+                return count($this->matches[0]) > 0;
+            }
+
         }
 
         return false;

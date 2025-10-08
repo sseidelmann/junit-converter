@@ -13,6 +13,7 @@ namespace Sseidelmann\JunitConverter\Factories;
 
 use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
+use Sseidelmann\JunitConverter\Converters\CsharpierConsoleConverter;
 use Sseidelmann\JunitConverter\Converters\DotnetPackageListJsonConverter;
 use Sseidelmann\JunitConverter\Converters\GnuConverter;
 use Sseidelmann\JunitConverter\Converters\NpmOutdatedJsonConverter;
@@ -27,10 +28,12 @@ class ConverterFactory
         GnuConverter::class,
         NpmOutdatedJsonConverter::class,
         DotnetPackageListJsonConverter::class,
+        CsharpierConsoleConverter::class,
     ];
 
     public function guessConverter(string $input): ?ConverterInterface {
         foreach ($this->converters as $converterClass) {
+            /** @var ConverterInterface $converter */
             $converter = new $converterClass($input);
 
             if ($converter->isReport()) {

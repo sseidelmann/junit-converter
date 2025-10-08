@@ -75,6 +75,12 @@ class ConvertCommand extends Command
 
         $converter = $this->converterFactory->guessConverter($report);
 
+        if ($converter === null) {
+            $output->writeln("no converter found");
+
+            return 1;
+        }
+
         $junit = $converter->convert();
 
         $output->write((string) $junit);
