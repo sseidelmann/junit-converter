@@ -146,7 +146,7 @@ class TestCase
             if (count($header) > 0) {
                 $failure->withDescription(
                     sprintf(
-                        "%s%s\n",
+                        "%s\n\n%s",
                         implode("\n", $header),
                         $failure->getDescription(),
                     )
