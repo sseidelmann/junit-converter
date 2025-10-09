@@ -56,6 +56,14 @@ class Failure
         return $this;
     }
 
+    public function getDescription() :string {
+        return $this->description;
+    }
+
+    private ?string $classname = null;
+    private ?string $filename = null;
+
+
     public static function Generic(string $severity, string $message, ?string $description = null) {
         return new self($severity, $message, $description);
     }

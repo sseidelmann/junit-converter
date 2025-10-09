@@ -23,7 +23,7 @@ class TestCase
     /**
      * Saves the failures for the testcase.
      *
-     * @var array
+     * @var Failure[]
      */
     private array $failures = [];
 
@@ -136,13 +136,38 @@ class TestCase
         }
         $node->setAttribute('failures', (string) count($this->failures));
 
+        /* currently disabled because of issue in dot splitting
+         * @see https://github.com/golangci/golangci-lint/issues/748
         if ($this->classname !== null) {
-            $node->setAttribute('classname', $this->classname);
+            $node->setAttribute('classname', str_replace('.', '_', $this->classname));
         } elseif ($this->fileName !== null) {
-            $node->setAttribute('classname', basename($this->fileName));
+            $node->setAttribute('classname', str_replace('.', '_', $this->fileName));
+        } */
+
+        // workaround for issue in dot splitting
+        $headerVars = [$this->classname, $this->fileName];
+        $header = '';
+        foreach ($headerVars as $headerVar) {
+            if ($headerVar !== null) {
+                $header = sprintf(
+                    "%s%s\n",
+                    $header,
+                    $headerVar,
+                );
+            }
         }
 
         foreach ($this->failures as $failure) {
+            if (strlen($header) > 0) {
+                $failure->withDescription(
+                    sprintf(
+                        "%s%s\n",
+                        $header,
+                        $failure->getDescription(),
+                    )
+                );
+            }
+
             $node->appendChild($failure->toXML($document));
         }
 
