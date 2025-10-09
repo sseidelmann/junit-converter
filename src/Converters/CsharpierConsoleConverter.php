@@ -59,7 +59,11 @@ class CsharpierConsoleConverter extends AbstractConverter implements ConverterIn
                     $tmpHeader = $this->matchHeader($nextLine);
 
                     if (null === $tmpHeader) {
-                        $message = trim($nextLine);
+                        $message = $nextLine;
+
+                        if (preg_match('/\s\s(.+)/', $message, $matches)) {
+                            $message = $matches[1];
+                        }
 
                         if (preg_match('/\-+\sExpected\:\sAround\sLine\s([^\s]+)\s\-+/', $message, $matches)) {
                             $header->line = (int) $matches[1];
@@ -93,6 +97,11 @@ class CsharpierConsoleConverter extends AbstractConverter implements ConverterIn
                 $testCase = $testSuite->testCase($message);
                 $testCase->withClassname($file);
                 $testCase->addFailure($failure);
+
+                if ($file == "./Logic/Logic.csproj") {
+                    print_r($issue->content);
+                    die();
+                }
             }
         }
 
