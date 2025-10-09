@@ -50,8 +50,6 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
             $fileName = $file->getAttribute('name');
 
             $testSuite = $junit->testSuite("checkstyle");
-            $testSuite->setFilename($fileName);
-
 
             $errors = $xpath->query('error', $file);
 
@@ -79,6 +77,7 @@ class CheckstyleConverter extends AbstractConverter implements ConverterInterfac
                     ;
 
                     $testCase->addFailure($failure);
+                    $testCase->withClassname($fileName);
                 }
             }
         }

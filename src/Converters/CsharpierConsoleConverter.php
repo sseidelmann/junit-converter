@@ -80,8 +80,6 @@ class CsharpierConsoleConverter extends AbstractConverter implements ConverterIn
 
         $testSuite = $junit->testSuite("csharpier");
         foreach ($issuesByFile as $file => $issues) {
-            $testSuite->setFilename($file);
-
             foreach ($issues as $issue) {
                 $failure = Failure::Generic(
                     $issue->header->severity,
@@ -95,6 +93,7 @@ class CsharpierConsoleConverter extends AbstractConverter implements ConverterIn
                 }
 
                 $testCase = $testSuite->testCase($message);
+                $testCase->withClassname($file);
                 $testCase->addFailure($failure);
             }
         }

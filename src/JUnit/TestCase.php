@@ -37,9 +37,15 @@ class TestCase
     /**
      * Saves the filename of the testcase.
      *
-     * @var string
+     * @var ?string
      */
-    private string $fileName;
+    private ?string $fileName = null;
+
+    /**
+     * Saves the classname.
+     *
+     * @var ?string
+     */
     private ?string $classname = null;
 
     /**
@@ -65,7 +71,7 @@ class TestCase
      *
      * @return $this
      */
-    public function setFilename(string $fileName): TestCase {
+    public function withFilename(string $fileName): TestCase {
         $this->fileName = $fileName;
 
         return $this;
@@ -122,6 +128,7 @@ class TestCase
      */
     public function toXML(\DOMDocument $document): \DOMNode {
         $node = $document->createElement('testcase');
+
         $node->setAttribute('name', $this->name);
 
         if ($this->line != 0) {
@@ -129,12 +136,10 @@ class TestCase
         }
         $node->setAttribute('failures', (string) count($this->failures));
 
-        if ($this->hasFilename()) {
-            $node->setAttribute('file', $this->getFilename());
-        }
-
-        if ($this->classname && strlen($this->classname) > 0) {
+        if ($this->classname !== null) {
             $node->setAttribute('classname', $this->classname);
+        } elseif ($this->fileName !== null) {
+            $node->setAttribute('classname', basename($this->fileName));
         }
 
         foreach ($this->failures as $failure) {
