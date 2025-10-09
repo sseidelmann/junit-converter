@@ -97,11 +97,6 @@ class CsharpierConsoleConverter extends AbstractConverter implements ConverterIn
                 $testCase = $testSuite->testCase($message);
                 $testCase->withClassname($file);
                 $testCase->addFailure($failure);
-
-                if ($file == "./Logic/Logic.csproj") {
-                    print_r($issue->content);
-                    die();
-                }
             }
         }
 
