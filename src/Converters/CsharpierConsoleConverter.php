@@ -88,9 +88,7 @@ class CsharpierConsoleConverter extends AbstractConverter implements ConverterIn
                 );
 
                 $message = $issue->header->message;
-                if ($issue->header->line !== null) {
-                    $message = sprintf("%s in line %s", $message, $issue->header->line);
-                }
+                $failure->withLine($issue->header->line);
 
                 $testCase = $testSuite->testCase($message);
                 $testCase->withClassname($file);

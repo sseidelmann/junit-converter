@@ -27,6 +27,7 @@ class Failure
      * @var null|string
      */
     private $description;
+    private ?int $line = null;
 
     public function __construct(
         ?string $type = null,
@@ -56,13 +57,19 @@ class Failure
         return $this;
     }
 
+    public function withLine(?int $line = null): self
+    {
+        $this->line = $line;
+        return $this;
+    }
+
+    public function getLine(): ?int {
+        return $this->line;
+    }
+
     public function getDescription() :string {
         return $this->description;
     }
-
-    private ?string $classname = null;
-    private ?string $filename = null;
-
 
     public static function Generic(string $severity, string $message, ?string $description = null) {
         return new self($severity, $message, $description);

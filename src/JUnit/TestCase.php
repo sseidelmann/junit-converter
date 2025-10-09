@@ -130,10 +130,6 @@ class TestCase
         $node = $document->createElement('testcase');
 
         $node->setAttribute('name', $this->name);
-
-        if ($this->line != 0) {
-            $node->setAttribute('line', (string) $this->line);
-        }
         $node->setAttribute('failures', (string) count($this->failures));
 
         /* currently disabled because of issue in dot splitting
@@ -144,25 +140,14 @@ class TestCase
             $node->setAttribute('classname', str_replace('.', '_', $this->fileName));
         } */
 
-        // workaround for issue in dot splitting
-        $headerVars = [$this->classname, $this->fileName];
-        $header = '';
-        foreach ($headerVars as $headerVar) {
-            if ($headerVar !== null) {
-                $header = sprintf(
-                    "%s%s\n",
-                    $header,
-                    $headerVar,
-                );
-            }
-        }
 
         foreach ($this->failures as $failure) {
-            if (strlen($header) > 0) {
+            $header = $this->createHeaderForDescription($failure);
+            if (count($header) > 0) {
                 $failure->withDescription(
                     sprintf(
                         "%s%s\n",
-                        $header,
+                        implode("\n", $header),
                         $failure->getDescription(),
                     )
                 );
@@ -172,5 +157,26 @@ class TestCase
         }
 
         return $node;
+    }
+
+    private function createHeaderForDescription(Failure $failure): array {
+        // workaround for issue in dot splitting
+        $headerVars = [
+            'classname' => $this->classname,
+            'filename ' => $this->fileName,
+            'line     ' => $failure->getLine(),
+        ];
+        $header = [];
+        foreach ($headerVars as $key => $value) {
+            if ($value !== null) {
+                $header[] = sprintf(
+                    "%s: %s",
+                    $key,
+                    $value,
+                );
+            }
+        }
+
+        return $header;
     }
 }
