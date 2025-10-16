@@ -13,13 +13,31 @@ namespace Sseidelmann\JunitConverter\Converters\Traits;
 
 use DOMDocument;
 
+/**
+ * Trait for handling xml formats.
+ */
 trait XmlConverterTrait
 {
+    /**
+     * Checks if the input is that type of XML.
+     *
+     * @param string $input
+     *
+     * @return bool
+     */
     protected function isXml(string $input): bool {
         return $input[0] === '<?xml' || $input[0] === '<';
     }
 
-    protected function loadXml(string $input): \DOMDocument {
+    /**
+     * Loads the XML and returns the DOMDocument.
+     *
+     * @param string $input
+     *
+     * @return DOMDocument
+     */
+    protected function loadXml(string $input): DOMDocument
+    {
         $dom = new DOMDocument();
         $dom->loadXML($input);
 
