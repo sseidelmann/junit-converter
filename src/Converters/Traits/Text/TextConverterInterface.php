@@ -17,8 +17,9 @@ interface TextConverterInterface
      * Loads the Text and returns the lines.
      *
      * @param string $input
+     * @param string|null $lineSeparator
      *
      * @return TextConverter
      */
-    public function loadLines(string $input, string $lineSeparator): TextConverter;
+    public function loadLines(string $input, ?string $lineSeparator = null): TextConverter;
 }

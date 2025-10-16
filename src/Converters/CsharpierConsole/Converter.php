@@ -46,6 +46,8 @@ class Converter extends AbstractConverter implements ConverterInterface
 
     public function isReport(): bool {
         if (!$this->isXml($this->getInput()) && !$this->isJson($this->getInput())) {
+            $this->text = $this->loadLines($this->getInput());
+
             $this->lines = explode(PHP_EOL, $this->getInput());
 
             if (str_starts_with($this->lines[0], 'Checked 0 files in')) {

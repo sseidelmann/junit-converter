@@ -16,6 +16,13 @@ use OutOfBoundsException;
 class TextConverter
 {
     /**
+     * Default line separator.
+     *
+     * @var string
+     */
+    private const DEFAULT_LINE_SEPARATOR = PHP_EOL;
+
+    /**
      * Saves the lines.
      *
      * @var array|string[]
@@ -35,8 +42,8 @@ class TextConverter
      * @param string $input
      * @param string $lineSeparator
      */
-    public function __construct(string $input, string $lineSeparator = PHP_EOL) {
-        $this->lines = explode($lineSeparator, $input);
+    public function __construct(string $input, ?string $lineSeparator = null) {
+        $this->lines = explode($lineSeparator ?? self::DEFAULT_LINE_SEPARATOR, $input);
     }
 
     /**
