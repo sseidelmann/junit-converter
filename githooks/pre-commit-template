@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Pfad zu PHPUnit (z.B. wenn es über Composer in vendor/bin installiert ist)
+# Passen Sie den Pfad an Ihre Projektstruktur an, falls nötig.
+PHPUNIT_COMMAND="./vendor/bin/phpunit"
+
+# Prüfen, ob die PHPUnit-Datei existiert
+if [ ! -f $PHPUNIT_COMMAND ]; then
+    echo "PHPUnit-Skript nicht gefunden unter $PHPUNIT_COMMAND"
+    echo "Commit wird fortgesetzt."
+    exit 0 # Commit zulassen, wenn PHPUnit nicht gefunden wird (optional, kann auch auf 1 gesetzt werden, um Abbruch zu erzwingen)
+fi
+
+echo "--- Starte PHPUnit-Tests (pre-commit hook) ---"
+
+# Führe PHPUnit aus.
+# Verwenden Sie 'set +e', um sicherzustellen, dass das Skript bei Fehlschlagen von PHPUnit nicht sofort beendet wird,
+# damit wir den Rückgabecode manuell prüfen können.
+
+$PHPUNIT_COMMAND
+
+# Speichere den Rückgabecode von PHPUnit
+RETURN_CODE=$?
+
+# Prüfe den Rückgabecode
+if [ $RETURN_CODE -ne 0 ]; then
+    echo "--- PHPUnit-Tests sind fehlgeschlagen! Commit wird abgebrochen. ---"
+    exit 1 # Commit abbrechen
+else
+    echo "--- PHPUnit-Tests erfolgreich. Commit wird fortgesetzt. ---"
+    exit 0 # Commit fortsetzen
+fi
