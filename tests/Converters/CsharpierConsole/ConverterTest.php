@@ -17,21 +17,15 @@ declare(strict_types=1);
  * @license MIT
  */
 
-namespace Sseidelmann\JunitConverterTests\Converters;
+namespace Sseidelmann\JunitConverterTests\Converters\CsharpierConsole;
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
-use Sseidelmann\JunitConverter\Converters\Converter;
-use Sseidelmann\JunitConverter\JUnit\JUnit;
+use Sseidelmann\JunitConverter\Converters\CsharpierConsole\Converter;
+use Sseidelmann\JunitConverterTests\Converters\AbstractConverterTestCase;
 
-class CSharpierConsoleConverterTest extends TestCase
+class ConverterTest extends AbstractConverterTestCase
 {
-    private function loadAsset(string $asset): string {
-        $filePath = dirname(__FILE__) . '/../assets/' . $asset;
-
-        return file_get_contents($filePath);
-    }
 
     #[Test]
     public function isCorrectName(): void {

@@ -13,7 +13,7 @@ namespace Sseidelmann\JunitConverter\Factories;
 
 use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
-use Sseidelmann\JunitConverter\Converters\Converter;
+use Sseidelmann\JunitConverter\Converters\CsharpierConsole\Converter;
 use Sseidelmann\JunitConverter\Converters\DotnetPackageListJsonConverter;
 use Sseidelmann\JunitConverter\Converters\GnuConverter;
 use Sseidelmann\JunitConverter\Converters\NpmOutdatedJsonConverter;
