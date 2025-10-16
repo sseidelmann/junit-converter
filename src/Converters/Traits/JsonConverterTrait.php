@@ -11,11 +11,20 @@ declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\Converters\Traits;
 
+/**
+ * Trait for handling json formats.
+ *
+ */
 trait JsonConverterTrait
 {
+    /**
+     * Checks if the input is that type of JSON.
+     *
+     * @param string $input
+     *
+     * @return bool
+     */
     protected function isJson(string $input): bool {
-        $checkFirstChar = $input[0] === '[' || $input[0] === '{';
-
-        return $checkFirstChar;
+        return $input[0] === '[' || $input[0] === '{';
     }
 }
