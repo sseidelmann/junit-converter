@@ -22,7 +22,7 @@ namespace Sseidelmann\JunitConverterTests\Converters;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
-use Sseidelmann\JunitConverter\Converters\CsharpierConsoleConverter;
+use Sseidelmann\JunitConverter\Converters\Converter;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
 class CSharpierConsoleConverterTest extends TestCase
@@ -35,7 +35,7 @@ class CSharpierConsoleConverterTest extends TestCase
 
     #[Test]
     public function isCorrectName(): void {
-        $csharpierConsoleConverter = new CsharpierConsoleConverter(
+        $csharpierConsoleConverter = new Converter(
             $this->loadAsset('csharpier.txt')
         );
 
@@ -44,7 +44,7 @@ class CSharpierConsoleConverterTest extends TestCase
 
     #[Test]
     public function runsCsharpierConsoleConverterReport(): void {
-        $csharpierConsoleConverter = new CsharpierConsoleConverter(
+        $csharpierConsoleConverter = new Converter(
             $this->loadAsset('csharpier.txt')
         );
 
@@ -53,7 +53,7 @@ class CSharpierConsoleConverterTest extends TestCase
 
     #[Test]
     public function runsCsharpierConsoleConverterReportWithNotFounds(): void {
-        $csharpierConsoleConverter = new CsharpierConsoleConverter(
+        $csharpierConsoleConverter = new Converter(
             $this->loadAsset('csharpier_all_ok.txt')
         );
 

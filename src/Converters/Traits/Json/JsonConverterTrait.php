@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @license MIT
  */
 
-namespace Sseidelmann\JunitConverter\Converters\Traits;
+namespace Sseidelmann\JunitConverter\Converters\Traits\Json;
 
 /**
  * Trait for handling json formats.
@@ -24,7 +24,7 @@ trait JsonConverterTrait
      *
      * @return bool
      */
-    protected function isJson(string $input): bool {
+    public function isJson(string $input): bool {
         return $input[0] === '[' || $input[0] === '{';
     }
 }

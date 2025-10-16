@@ -11,11 +11,13 @@ declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\Converters;
 
-use Sseidelmann\JunitConverter\Converters\Traits\JsonConverterTrait;
-use Sseidelmann\JunitConverter\Converters\Traits\XmlConverterTrait;
+use Sseidelmann\JunitConverter\Converters\Traits\Json\JsonConverterInterface;
+use Sseidelmann\JunitConverter\Converters\Traits\Json\JsonConverterTrait;
+use Sseidelmann\JunitConverter\Converters\Traits\Xml\XmlConverterInterface;
+use Sseidelmann\JunitConverter\Converters\Traits\Xml\XmlConverterTrait;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
-class AbstractConverter
+abstract class AbstractConverter implements ConverterInterface, JsonConverterInterface, XmlConverterInterface
 {
     use JsonConverterTrait;
     use XmlConverterTrait;

@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @license MIT
  */
 
-namespace Sseidelmann\JunitConverter\Converters\Traits;
+namespace Sseidelmann\JunitConverter\Converters\Traits\Xml;
 
 use DOMDocument;
 
@@ -25,7 +25,7 @@ trait XmlConverterTrait
      *
      * @return bool
      */
-    protected function isXml(string $input): bool {
+    public function isXml(string $input): bool {
         return $input[0] === '<?xml' || $input[0] === '<';
     }
 
@@ -36,7 +36,7 @@ trait XmlConverterTrait
      *
      * @return DOMDocument
      */
-    protected function loadXml(string $input): DOMDocument
+    public function loadXml(string $input): DOMDocument
     {
         $dom = new DOMDocument();
         $dom->loadXML($input);

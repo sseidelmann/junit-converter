@@ -9,19 +9,39 @@ declare(strict_types=1);
  * @license MIT
  */
 
-namespace Sseidelmann\JunitConverter\Converters;
+namespace Sseidelmann\JunitConverter\Converters\CsharpierConsole;
 
-use DOMElement;
-use DOMXPath;
+use Sseidelmann\JunitConverter\Converters\AbstractConverter;
+use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
-class CsharpierConsoleConverter extends AbstractConverter implements ConverterInterface
+/**
+ * Converter for csharpier console output.
+ */
+class Converter extends AbstractConverter implements ConverterInterface
 {
+    /**
+     * Defines the name of the converter.
+     *
+     * @var string
+     */
+    private const NAME = 'csharpier';
+
+    /**
+     * Saves the lines.
+     *
+     * @var array
+     */
     private array $lines = [];
 
+    /**
+     * Returns the name.
+     *
+     * @return string
+     */
     public function getName(): string {
-        return 'csharpier';
+        return self::NAME;
     }
 
     public function isReport(): bool {
