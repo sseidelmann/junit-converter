@@ -1,7 +1,7 @@
 <?php
 /**
  * @project Junit Converter
- * @file TextConverterInterface.php
+ * @file TextConverterTrait.php
  * @author Sebastian Seidelmann
  * @copyright 2025 Sebastian Seidelmann
  * @license MIT
@@ -11,7 +11,10 @@ declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\Converters\Traits\Text;
 
-interface TextConverterInterface
+/**
+ * Trait for handling text formats.
+ */
+trait TextConverterTrait
 {
     /**
      * Loads the Text and returns the lines.
@@ -20,5 +23,7 @@ interface TextConverterInterface
      *
      * @return TextConverter
      */
-    public function loadLines(string $input, string $lineSeparator): TextConverter;
+    public function loadLines(string $input, string $lineSeparator): TextConverter {
+        return new TextConverter($input, $lineSeparator);
+    }
 }

@@ -13,14 +13,21 @@ namespace Sseidelmann\JunitConverter\Converters;
 
 use Sseidelmann\JunitConverter\Converters\Traits\Json\JsonConverterInterface;
 use Sseidelmann\JunitConverter\Converters\Traits\Json\JsonConverterTrait;
+use Sseidelmann\JunitConverter\Converters\Traits\Text\TextConverterInterface;
+use Sseidelmann\JunitConverter\Converters\Traits\Text\TextConverterTrait;
 use Sseidelmann\JunitConverter\Converters\Traits\Xml\XmlConverterInterface;
 use Sseidelmann\JunitConverter\Converters\Traits\Xml\XmlConverterTrait;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
-abstract class AbstractConverter implements ConverterInterface, JsonConverterInterface, XmlConverterInterface
+abstract class AbstractConverter implements
+    ConverterInterface,
+    JsonConverterInterface,
+    XmlConverterInterface,
+    TextConverterInterface
 {
     use JsonConverterTrait;
     use XmlConverterTrait;
+    use TextConverterTrait;
 
     /**
      * Saves the input
