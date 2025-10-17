@@ -46,6 +46,20 @@ abstract class AbstractConverter implements
     }
 
     /**
+     * Returns the name of the report.
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        $class = get_called_class();
+        $classSlugs = explode('\\', $class);
+        array_pop($classSlugs);
+
+        return strtolower(array_pop($classSlugs));
+    }
+
+    /**
      * Returns the input.
      *
      * @return string

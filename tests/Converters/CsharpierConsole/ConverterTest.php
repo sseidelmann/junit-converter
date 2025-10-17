@@ -22,20 +22,10 @@ namespace Sseidelmann\JunitConverterTests\Converters\CsharpierConsole;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Sseidelmann\JunitConverter\Converters\CsharpierConsole\Converter;
-use Sseidelmann\JunitConverterTests\Converters\AbstractConverterTestCase;
+use Sseidelmann\JunitConverterTests\Converters\AbstractConverterTest;
 
-class ConverterTest extends AbstractConverterTestCase
+class ConverterTest extends AbstractConverterTest
 {
-
-    #[Test]
-    public function isCorrectName(): void {
-        $csharpierConsoleConverter = new Converter(
-            $this->loadAsset('csharpier.txt')
-        );
-
-        $this->assertEquals('csharpier', $csharpierConsoleConverter->getName());
-    }
-
     #[Test]
     public function runsCsharpierConsoleConverterReport(): void {
         $csharpierConsoleConverter = new Converter(

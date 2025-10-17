@@ -23,28 +23,13 @@ use Sseidelmann\JunitConverter\JUnit\JUnit;
 class Converter extends AbstractConverter implements ConverterInterface
 {
     /**
-     * Defines the name of the converter.
-     *
-     * @var string
-     */
-    private const NAME = 'csharpier';
-
-    /**
      * Saves the lines.
      *
      * @var TextConverter
      */
     private TextConverter $lines;
 
-    /**
-     * Returns the name.
-     *
-     * @return string
-     */
-    public function getName(): string {
-        return self::NAME;
-    }
-
+    /** @inheritDoc */
     public function isReport(): bool {
         if (!$this->isXml($this->getInput()) && !$this->isJson($this->getInput())) {
             $this->lines = $this->loadLines($this->getInput());
