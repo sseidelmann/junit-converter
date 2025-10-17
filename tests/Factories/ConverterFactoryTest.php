@@ -21,10 +21,10 @@ namespace Sseidelmann\JunitConverterTests\Factories;
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
+use Sseidelmann\JunitConverter\Converters\Checkstyle\Converter as CheckstyleConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
-use Sseidelmann\JunitConverter\Converters\GnuConverter;
-use Sseidelmann\JunitConverter\Converters\SonarqubeConverter;
+use Sseidelmann\JunitConverter\Converters\Gnu\Converter as GnuConverter;
+use Sseidelmann\JunitConverter\Converters\Sonarqube\Converter as SonarqubeConverter;
 use Sseidelmann\JunitConverter\Factories\ConverterFactory;
 
 class ConverterFactoryTest extends TestCase

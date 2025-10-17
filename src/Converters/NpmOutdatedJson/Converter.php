@@ -9,15 +9,17 @@ declare(strict_types=1);
  * @license MIT
  */
 
-namespace Sseidelmann\JunitConverter\Converters;
+namespace Sseidelmann\JunitConverter\Converters\NpmOutdatedJson;
 
+use Sseidelmann\JunitConverter\Converters\AbstractConverter;
+use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
 /**
  * Converter for handling outdated npm packages.
  */
-class NpmOutdatedJsonConverter extends AbstractConverter implements ConverterInterface
+class Converter extends AbstractConverter implements ConverterInterface
 {
     /**
      * Saves the converted data.

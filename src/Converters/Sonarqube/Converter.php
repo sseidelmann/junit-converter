@@ -9,12 +9,14 @@ declare(strict_types=1);
  * @license MIT
  */
 
-namespace Sseidelmann\JunitConverter\Converters;
+namespace Sseidelmann\JunitConverter\Converters\Sonarqube;
 
+use Sseidelmann\JunitConverter\Converters\AbstractConverter;
+use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
-class SonarqubeConverter extends AbstractConverter implements ConverterInterface
+class Converter extends AbstractConverter implements ConverterInterface
 {
     public function getName(): string {
         return 'sonarqube';

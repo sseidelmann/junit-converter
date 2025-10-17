@@ -9,13 +9,15 @@ declare(strict_types=1);
  * @license MIT
  */
 
-namespace Sseidelmann\JunitConverter\Converters;
+namespace Sseidelmann\JunitConverter\Converters\Gnu;
 
 use DOMElement;
+use Sseidelmann\JunitConverter\Converters\AbstractConverter;
+use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
-class GnuConverter extends AbstractConverter implements ConverterInterface
+class Converter extends AbstractConverter implements ConverterInterface
 {
     private array $matches;
 

@@ -11,24 +11,24 @@ declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\Factories;
 
-use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
+use Sseidelmann\JunitConverter\Converters\Checkstyle\Converter as CheckstyleConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
-use Sseidelmann\JunitConverter\Converters\CsharpierConsole\Converter;
-use Sseidelmann\JunitConverter\Converters\DotnetPackageListJsonConverter;
-use Sseidelmann\JunitConverter\Converters\GnuConverter;
-use Sseidelmann\JunitConverter\Converters\NpmOutdatedJsonConverter;
-use Sseidelmann\JunitConverter\Converters\SonarqubeConverter;
+use Sseidelmann\JunitConverter\Converters\CsharpierConsole\Converter as CsharpierConsoleConverter;
+use Sseidelmann\JunitConverter\Converters\DotnetPackageListJson\Converter as DotnetPackageListJsonConverter;
+use Sseidelmann\JunitConverter\Converters\Gnu\Converter as GnuConverter;
+use Sseidelmann\JunitConverter\Converters\NpmOutdatedJson\Converter as NpmOutdatedJsonConverter;
+use Sseidelmann\JunitConverter\Converters\Sonarqube\Converter as SonarqubeConverter;
 
 class ConverterFactory
 {
     /** @var ConverterInterface[] */
     private array $converters = [
         CheckstyleConverter::class,
+        DotnetPackageListJsonConverter::class,
+        NpmOutdatedJsonConverter::class,
         SonarqubeConverter::class,
         GnuConverter::class,
-        NpmOutdatedJsonConverter::class,
-        DotnetPackageListJsonConverter::class,
-        Converter::class,
+        CsharpierConsoleConverter::class,
     ];
 
     public function guessConverter(string $input): ?ConverterInterface {

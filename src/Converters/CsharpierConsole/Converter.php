@@ -53,8 +53,8 @@ class Converter extends AbstractConverter implements ConverterInterface
         /** @var CsharpierConsoleConverterIssue[] $issues */
         $issues = [];
 
-        for ($lineCounter = 0; $lineCounter < $this->lines->count(); $lineCounter++) {
-            $line = $this->lines[$lineCounter];
+        while (false !== $this->lines->eof()) {
+            $line = $this->lines->current();
             $tmpHeader = $this->matchHeader($line);
 
             if ($tmpHeader !== null) {
@@ -63,7 +63,7 @@ class Converter extends AbstractConverter implements ConverterInterface
                 $tmpHeader = null;
                 $issueLines = [];
                 do {
-                    $nextLine = $this->lines[($lineCounter + count($issueLines) + 1)];
+                    $nextLine = $this->lines->getLineAt($this->lines->getPosition() + count($issueLines) + 1);
                     $tmpHeader = $this->matchHeader($nextLine);
 
                     if (null === $tmpHeader) {
@@ -81,7 +81,7 @@ class Converter extends AbstractConverter implements ConverterInterface
                     } else {
                         $issues[] = new CsharpierConsoleConverterIssue($header, $issueLines);
                     }
-                } while ($tmpHeader === null && ($lineCounter + count($issueLines) + 1) < count($this->lines));;
+                } while ($tmpHeader === null && ($this->lines->getPosition() + count($issueLines) + 1) < count($this->lines));;
             }
         }
 

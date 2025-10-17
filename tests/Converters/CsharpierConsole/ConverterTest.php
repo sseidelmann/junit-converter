@@ -43,4 +43,17 @@ class ConverterTest extends AbstractConverterTest
 
         $this->assertTrue($csharpierConsoleConverter->isReport());
     }
+
+    #[Test]
+    public function CsharpierConsoleConverter_Runs(): void {
+        $csharpierConsoleConverter = new Converter(
+            $this->loadAsset('csharpier.txt')
+        );
+
+        $this->assertTrue($csharpierConsoleConverter->isReport());
+
+        $junit = $csharpierConsoleConverter->convert();
+
+        $this->assertInstanceOf(\Sseidelmann\JunitConverter\JUnit\JUnit::class, $junit);
+    }
 }

@@ -9,14 +9,16 @@ declare(strict_types=1);
  * @license MIT
  */
 
-namespace Sseidelmann\JunitConverter\Converters;
+namespace Sseidelmann\JunitConverter\Converters\Checkstyle;
 
 use DOMElement;
 use DOMXPath;
+use Sseidelmann\JunitConverter\Converters\AbstractConverter;
+use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
-class CheckstyleConverter extends AbstractConverter implements ConverterInterface
+class Converter extends AbstractConverter implements ConverterInterface
 {
     public function getName(): string {
         return 'checkstyle';

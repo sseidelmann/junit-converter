@@ -21,7 +21,7 @@ namespace Sseidelmann\JunitConverterTests\Converters;
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Sseidelmann\JunitConverter\Converters\CheckstyleConverter;
+use Sseidelmann\JunitConverter\Converters\Checkstyle\Converter;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
 class CheckstyleConverterTest extends TestCase
@@ -34,7 +34,7 @@ class CheckstyleConverterTest extends TestCase
 
     #[Test]
     public function isCorrectName(): void {
-        $checkstyleConverter = new CheckstyleConverter(
+        $checkstyleConverter = new Converter(
             $this->loadAsset('checkstyle.xml')
         );
 
@@ -43,7 +43,7 @@ class CheckstyleConverterTest extends TestCase
 
     #[Test]
     public function runsCheckstyleReport(): void {
-        $checkstyleConverter = new CheckstyleConverter(
+        $checkstyleConverter = new Converter(
             $this->loadAsset('checkstyle.xml')
         );
 
@@ -52,7 +52,7 @@ class CheckstyleConverterTest extends TestCase
 
     #[Test]
     public function convertsToJunit(): void {
-        $checkstyleConverter = new CheckstyleConverter(
+        $checkstyleConverter = new Converter(
             $this->loadAsset('checkstyle.xml')
         );
 

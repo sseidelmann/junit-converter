@@ -56,6 +56,15 @@ class TextConverter
     }
 
     /**
+     * Returns the position of the cursor.
+     *
+     * @return int
+     */
+    public function getPosition(): int {
+        return $this->position;
+    }
+
+    /**
      * Returns the number of lines.
      *
      * @return int
@@ -164,6 +173,6 @@ class TextConverter
      * @return bool
      */
     public function eof() {
-        return $this->position == count($this->lines);
+        return $this->position == count($this->lines) - 1;
     }
 }

@@ -127,4 +127,37 @@ class TextConverterTest extends TestCase
         $textConverter->rewind();
         $textConverter->previous();
     }
+
+    #[Test]
+    public function TextConverter_EOF_ChecksIfDocumentAtEnd(): void {
+        $textConverter = new TextConverter('first' . PHP_EOL . 'second');
+
+        $this->assertFalse($textConverter->eof());
+        $textConverter->next();
+        $this->assertTrue($textConverter->eof());
+    }
+
+    #[Test]
+    public function TextConverter_getPosition_ReturnsInitialZero(): void {
+        $textConverter = new TextConverter('first' . PHP_EOL . 'second');
+
+        $this->assertEquals(0, $textConverter->getPosition());
+    }
+
+    #[Test]
+    public function TextConverter_getPosition_ReturnsOneWhenNextCalled(): void {
+        $textConverter = new TextConverter('first' . PHP_EOL . 'second');
+
+        $textConverter->next();
+        $this->assertEquals(1, $textConverter->getPosition());
+    }
+
+    #[Test]
+    public function TextConverter_getPosition_ReturnsZeroWhenNextAndPreviousCalled(): void {
+        $textConverter = new TextConverter('first' . PHP_EOL . 'second');
+
+        $textConverter->next();
+        $textConverter->previous();
+        $this->assertEquals(0, $textConverter->getPosition());
+    }
 }
