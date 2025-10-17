@@ -18,24 +18,33 @@ use Sseidelmann\JunitConverter\Converters\DotnetPackageListJson\Converter as Dot
 use Sseidelmann\JunitConverter\Converters\Gnu\Converter as GnuConverter;
 use Sseidelmann\JunitConverter\Converters\NpmOutdatedJson\Converter as NpmOutdatedJsonConverter;
 use Sseidelmann\JunitConverter\Converters\Sonarqube\Converter as SonarqubeConverter;
+use Sseidelmann\JunitConverter\Converters\Sarif\Converter as SarifConverter;
 
 class ConverterFactory
 {
     /** @var ConverterInterface[] */
-    private array $converters = [
+    private static array $converters = [
         CheckstyleConverter::class,
         DotnetPackageListJsonConverter::class,
         NpmOutdatedJsonConverter::class,
         SonarqubeConverter::class,
         GnuConverter::class,
         CsharpierConsoleConverter::class,
+        SarifConverter::class,
     ];
 
-    public function guessConverter(string $input): ?ConverterInterface {
-        foreach ($this->converters as $converterClass) {
-            /** @var ConverterInterface $converter */
-            $converter = new $converterClass($input);
+    public function guessConverter(string $input, array $listOfConverters = []): ?ConverterInterface {
+        $converters = $this->getConverter($input);
 
+        if (count($listOfConverters) > 0) {
+            foreach ($converters as $name => $converter) {
+                if (!in_array($name, $listOfConverters)) {
+                    unset($converters[$name]);
+                }
+            }
+        }
+
+        foreach ($converters as $converter) {
             if ($converter->isReport()) {
                 return $converter;
             }
@@ -47,9 +56,13 @@ class ConverterFactory
     /**
      * @return ConverterInterface[]
      */
-    public function getConverter(): array {
-        return array_map(function ($class) {
-            return new $class('');
-        }, $this->converters);
+    private function getConverter(string $input): array {
+        $converterClasses = [];
+        foreach (self::$converters as $converterClass) {
+            $converterInstance = new $converterClass($input);
+            $converterClasses[$converterInstance->getName()] = $converterInstance;
+        }
+
+        return $converterClasses;
     }
 }

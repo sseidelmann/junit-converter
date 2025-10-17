@@ -1,0 +1,1332 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.11.0.0",
+        "fileVersion": "4.11.0-3.24554.2 (bc1c3011)",
+        "semanticVersion": "4.11.0"
+      },
+      "results": [
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 14,
+                  "endLine": 15,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/StartupVersionAdapter.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 27,
+                  "endLine": 25,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/CsprojVersionAdapter.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 27,
+                  "endLine": 30,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/PhpMetaVersionAdapter.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 25,
+                  "endLine": 23,
+                  "endColumn": 86
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/PythonVersionAdapter.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 27,
+                  "endLine": 25,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Helpers/VersionHelper.cs",
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 16,
+                  "endLine": 43,
+                  "endColumn": 132
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/PythonVersionAdapter.cs",
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 30,
+                  "endLine": 47,
+                  "endColumn": 100
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/CsprojVersionAdapter.cs",
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 37,
+                  "endLine": 64,
+                  "endColumn": 112
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/CsprojVersionAdapter.cs",
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 30,
+                  "endLine": 68,
+                  "endColumn": 129
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SYSLIB1045",
+          "level": "note",
+          "message": "Use 'GeneratedRegexAttribute' to generate the regular expression implementation at compile-time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/PhpMetaVersionAdapter.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 25,
+                  "endLine": 23,
+                  "endColumn": 86
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SYSLIB1045",
+          "level": "note",
+          "message": "Use 'GeneratedRegexAttribute' to generate the regular expression implementation at compile-time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/PythonVersionAdapter.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 27,
+                  "endLine": 25,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3267",
+          "level": "warning",
+          "message": "Loop should be simplified by calling Select(match => match.Value))",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/StartupVersionAdapter.cs",
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 37,
+                  "endLine": 53,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/StartupVersionAdapter.cs",
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 46,
+                  "endLine": 50,
+                  "endColumn": 88
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/StartupVersionAdapter.cs",
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 27,
+                  "endLine": 63,
+                  "endColumn": 95
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/StartupVersionAdapter.cs",
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 27,
+                  "endLine": 68,
+                  "endColumn": 105
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6444",
+          "level": "warning",
+          "message": "Pass a timeout to limit the execution time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/PhpMetaVersionAdapter.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 34,
+                  "endLine": 50,
+                  "endColumn": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SYSLIB1045",
+          "level": "note",
+          "message": "Use 'GeneratedRegexAttribute' to generate the regular expression implementation at compile-time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Helpers/VersionHelper.cs",
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 16,
+                  "endLine": 43,
+                  "endColumn": 132
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SYSLIB1045",
+          "level": "note",
+          "message": "Use 'GeneratedRegexAttribute' to generate the regular expression implementation at compile-time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/PythonVersionAdapter.cs",
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 30,
+                  "endLine": 47,
+                  "endColumn": 100
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4792",
+          "level": "warning",
+          "message": "Make sure that this logger's configuration is safe.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 9,
+                  "endLine": 42,
+                  "endColumn": 11
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4792",
+          "level": "warning",
+          "message": "Make sure that this logger's configuration is safe.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 13,
+                  "endLine": 40,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4036",
+          "level": "warning",
+          "message": "Make sure the \"PATH\" used to find this command includes only what you intend.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Services/SelfVersionUpdateService.cs",
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 21,
+                  "endLine": 149,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 32,
+                  "endLine": 69,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 13,
+                  "endLine": 85,
+                  "endColumn": 18
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 13,
+                  "endLine": 101,
+                  "endColumn": 18
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 13,
+                  "endLine": 117,
+                  "endColumn": 18
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 133,
+                  "startColumn": 13,
+                  "endLine": 133,
+                  "endColumn": 18
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 13,
+                  "endLine": 149,
+                  "endColumn": 18
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 165,
+                  "startColumn": 13,
+                  "endLine": 165,
+                  "endColumn": 18
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 182,
+                  "startColumn": 13,
+                  "endLine": 182,
+                  "endColumn": 18
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Program.cs",
+                "region": {
+                  "startLine": 198,
+                  "startColumn": 13,
+                  "endLine": 198,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+2 (incl 1 for nesting)",
+              "1": "+2 (incl 1 for nesting)",
+              "2": "+2 (incl 1 for nesting)",
+              "3": "+2 (incl 1 for nesting)",
+              "4": "+2 (incl 1 for nesting)",
+              "5": "+2 (incl 1 for nesting)",
+              "6": "+2 (incl 1 for nesting)",
+              "7": "+2 (incl 1 for nesting)"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1860",
+          "level": "note",
+          "message": "Prefer comparing 'Count' to 0 rather than using 'Any()', both for clarity and for performance",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Services/VersionUpdateService.cs",
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 14,
+                  "endLine": 76,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "DiagnosticPropertyKey": "Count"
+            }
+          }
+        },
+        {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Services/SelfVersionUpdateService.cs",
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 26,
+                  "endLine": 86,
+                  "endColumn": 99
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3220",
+          "level": "warning",
+          "message": "Review this call, which partially matches an overload without 'params'. The partial match is 'string[] string.Split(char separator, int count, StringSplitOptions options = StringSplitOptions.None)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Helpers/VersionHelper.cs",
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 18,
+                  "endLine": 53,
+                  "endColumn": 89
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'IncrementMajorVersion' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Commands/MajorVersionCommand.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 20,
+                  "endLine": 36,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'IncrementMinorVersion' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Commands/MinorVersionCommand.cs",
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 20,
+                  "endLine": 39,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'IncrementPatchVersion' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Commands/PatchVersionCommand.cs",
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 20,
+                  "endLine": 37,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "SYSLIB1045",
+          "level": "note",
+          "message": "Use 'GeneratedRegexAttribute' to generate the regular expression implementation at compile-time.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/PhpMetaVersionAdapter.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 34,
+                  "endLine": 50,
+                  "endColumn": 14
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 18,
+                  "endLine": 108,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 112,
+                  "startColumn": 9,
+                  "endLine": 112,
+                  "endColumn": 11
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 13,
+                  "endLine": 115,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 67,
+                  "endLine": 115,
+                  "endColumn": 69
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 17,
+                  "endLine": 118,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 121,
+                  "startColumn": 21,
+                  "endLine": 121,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 130,
+                  "startColumn": 13,
+                  "endLine": 130,
+                  "endColumn": 20
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 17,
+                  "endLine": 132,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 138,
+                  "startColumn": 9,
+                  "endLine": 138,
+                  "endColumn": 13
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 141,
+                  "startColumn": 13,
+                  "endLine": 141,
+                  "endColumn": 20
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 143,
+                  "startColumn": 17,
+                  "endLine": 143,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 18,
+                  "endLine": 108,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+2 (incl 1 for nesting)",
+              "10": "+1 (recursion)",
+              "2": "+1",
+              "3": "+3 (incl 2 for nesting)",
+              "4": "+4 (incl 3 for nesting)",
+              "5": "+2 (incl 1 for nesting)",
+              "6": "+3 (incl 2 for nesting)",
+              "7": "+1",
+              "8": "+2 (incl 1 for nesting)",
+              "9": "+3 (incl 2 for nesting)"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1837",
+          "level": "note",
+          "message": "Use 'Environment.ProcessId' instead of 'Process.GetCurrentProcess().Id'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Services/SelfVersionUpdateService.cs",
+                "region": {
+                  "startLine": 143,
+                  "startColumn": 27,
+                  "endLine": 143,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 17,
+                  "endLine": 118,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 13,
+                  "endLine": 115,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 121,
+                  "startColumn": 21,
+                  "endLine": 121,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 17,
+                  "endLine": 118,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'GetLatestVersion' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Services/SelfVersionUpdateService.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 25,
+                  "endLine": 101,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'GetCurrentVersion' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Services/SelfVersionUpdateService.cs",
+                "region": {
+                  "startLine": 121,
+                  "startColumn": 25,
+                  "endLine": 121,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'ExecuteCommand' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Services/SelfVersionUpdateService.cs",
+                "region": {
+                  "startLine": 139,
+                  "startColumn": 22,
+                  "endLine": 139,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3267",
+          "level": "warning",
+          "message": "Loops should be simplified with \"LINQ\" expressions",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 130,
+                  "startColumn": 35,
+                  "endLine": 130,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 21,
+                  "endLine": 132,
+                  "endColumn": 76
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3267",
+          "level": "warning",
+          "message": "Loops should be simplified with \"LINQ\" expressions",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 141,
+                  "startColumn": 34,
+                  "endLine": 141,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 143,
+                  "startColumn": 21,
+                  "endLine": 143,
+                  "endColumn": 69
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "level": "note",
+          "message": "Member 'UpdatePackageVersion' does not access instance data and can be marked as static",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///workspace/Adapters/NpmVersionAdapter%20.cs",
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 18,
+                  "endLine": 108,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CA1822": {
+          "id": "CA1822",
+          "shortDescription": "Mark members as static",
+          "fullDescription": "Members that do not access instance data or call instance methods can be marked as static. After you mark the methods as static, the compiler will emit nonvirtual call sites to these members. This can give you a measurable performance gain for performance-sensitive code.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "PortedFromFxCop",
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CA1837": {
+          "id": "CA1837",
+          "shortDescription": "Use 'Environment.ProcessId'",
+          "fullDescription": "'Environment.ProcessId' is simpler and faster than 'Process.GetCurrentProcess().Id'.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1837",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CA1860": {
+          "id": "CA1860",
+          "shortDescription": "Avoid using 'Enumerable.Any()' extension method",
+          "fullDescription": "Prefer using 'IsEmpty', 'Count' or 'Length' properties whichever available, rather than calling 'Enumerable.Any()'. The intent is clearer and it is more performant than using 'Enumerable.Any()' extension method.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1860",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "S1066": {
+          "id": "S1066",
+          "shortDescription": "Collapsible \"if\" statements should be merged",
+          "fullDescription": "Merging collapsible if statements increases the code’s readability.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1066",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1075": {
+          "id": "S1075",
+          "shortDescription": "URIs should not be hardcoded",
+          "fullDescription": "Hardcoding a URI makes it difficult to test a program: path literals are not always portable across operating systems, a given absolute path may not exist on a specific test environment, a specified Internet URL may not be available when executing the tests, production environment filesystems usually differ from the development environment, …​etc. For all those reasons, a URI should never be hardcoded. Instead, it should be replaced by customizable parameter.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1075",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1118": {
+          "id": "S1118",
+          "shortDescription": "Utility classes should not have public constructors",
+          "fullDescription": "Utility classes, which are collections of static members, are not meant to be instantiated.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3220": {
+          "id": "S3220",
+          "shortDescription": "Method calls should not resolve ambiguously to overloads with \"params\"",
+          "fullDescription": "The rules for method resolution are complex and perhaps not properly understood by all coders. The params keyword can make method declarations overlap in non-obvious ways, so that slight changes in the argument types of an invocation can resolve to different methods.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3220",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3267": {
+          "id": "S3267",
+          "shortDescription": "Loops should be simplified with \"LINQ\" expressions",
+          "fullDescription": "When a loop is filtering, selecting or aggregating, those functions can be handled with a clearer, more concise LINQ expression instead.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3267",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3776": {
+          "id": "S3776",
+          "shortDescription": "Cognitive Complexity of methods should not be too high",
+          "fullDescription": "Cognitive Complexity is a measure of how hard the control flow of a method is to understand. Methods with high Cognitive Complexity will be difficult to maintain.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3776",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": false,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S4036": {
+          "id": "S4036",
+          "shortDescription": "Searching OS commands in PATH is security-sensitive",
+          "fullDescription": "When executing an OS command and unless you specify the full path to the executable, then the locations in your application’s PATH environment variable will be searched for the executable. That search could leave an opening for an attacker if one of the elements in PATH is a directory under his control.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4036",
+          "properties": {
+            "category": "Minor Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S4792": {
+          "id": "S4792",
+          "shortDescription": "Configuring loggers is security-sensitive",
+          "fullDescription": "Configuring loggers is security-sensitive. It has led in the past to the following vulnerabilities:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4792",
+          "properties": {
+            "category": "Critical Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6444": {
+          "id": "S6444",
+          "shortDescription": "Not specifying a timeout for regular expressions is security-sensitive",
+          "fullDescription": "Not specifying a timeout for regular expressions can lead to a Denial-of-Service attack. Pass a timeout when using System.Text.RegularExpressions to process untrusted input because a malicious user might craft a value for which the evaluation lasts excessively long.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6444",
+          "properties": {
+            "category": "Major Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "SYSLIB1045": {
+          "id": "SYSLIB1045",
+          "shortDescription": "Convert to 'GeneratedRegexAttribute'.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/syslib-diagnostics/syslib1045",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true
+          }
+        }
+      }
+    }
+  ]
+}

@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\JUnit;
 
+use Sseidelmann\JunitConverter\Converters\Issue;
+
 class TestSuite
 {
     /**
@@ -61,6 +63,25 @@ class TestSuite
         $this->addTestCase($testCase);
 
         return $testCase;
+    }
+
+    public function addIssue(string $fileName, Issue $issue) {
+
+        $failure = Failure::Generic(
+            $issue->level()->name,
+            $issue->ruleId(),
+            $issue->message()
+        );
+
+        $failure
+            ->withLine($issue->line())
+            ->withColumn($issue->column())
+        ;
+
+        $testCase = $this->testCase($issue->message());
+
+        $testCase->withClassname($fileName);
+        $testCase->addFailure($failure);
     }
 
     /**

@@ -28,6 +28,8 @@ class Failure
      */
     private $description;
     private ?int $line = null;
+    private ?int $column = null;
+
 
     public function __construct(
         ?string $type = null,
@@ -63,8 +65,18 @@ class Failure
         return $this;
     }
 
+    public function withColumn(?int $column = null): self
+    {
+        $this->column = $column;
+        return $this;
+    }
+
     public function getLine(): ?int {
         return $this->line;
+    }
+
+    public function getColumn(): ?int {
+        return $this->column;
     }
 
     public function getDescription() :string {

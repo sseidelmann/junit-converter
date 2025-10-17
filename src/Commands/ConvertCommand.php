@@ -15,6 +15,7 @@ use Sseidelmann\JunitConverter\Factories\ConverterFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -35,9 +36,9 @@ class ConvertCommand extends Command
      * @param ConverterFactory $converterFactory
      */
     public function __construct(ConverterFactory $converterFactory) {
-        parent::__construct();
-
         $this->converterFactory = $converterFactory;
+
+        parent::__construct();
     }
 
     /**
@@ -53,7 +54,14 @@ class ConvertCommand extends Command
                 'input',
                 InputArgument::OPTIONAL,
                 "The report to convert from"
-            );
+            )
+            ->addOption(
+                'converter',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'The converter to use'
+            )
+        ;
     }
 
     /**
@@ -66,6 +74,11 @@ class ConvertCommand extends Command
             $report = (string) $input->getArgument('input');
         }
 
+        $listOfConverters = [];
+        if ($input->hasOption('converter')) {
+            $listOfConverters[] = $input->getOption('converter');
+        }
+
 
         if (strlen($report) === 0) {
             $output->writeln("no input");
@@ -73,7 +86,7 @@ class ConvertCommand extends Command
             return 1;
         }
 
-        $converter = $this->converterFactory->guessConverter($report);
+        $converter = $this->converterFactory->guessConverter($report, $listOfConverters);
 
         if ($converter === null) {
             $output->writeln("no converter found");

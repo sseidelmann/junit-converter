@@ -76,22 +76,4 @@ class ConverterFactoryTest extends TestCase
 
         $this->assertNull($converter);
     }
-
-    #[Test]
-    public function itHasConverters(): void {
-        $converterFactory = new ConverterFactory();
-
-        $converters = $converterFactory->getConverter();
-
-        $this->assertNotEmpty($converters);
-    }
-
-    #[Test]
-    public function itContainsConverterInterfaces(): void {
-        $converterFactory = new ConverterFactory();
-
-        $converters = $converterFactory->getConverter();
-
-        $this->assertContainsOnlyInstancesOf(ConverterInterface::class, $converters);
-    }
 }

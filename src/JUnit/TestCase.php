@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Sseidelmann\JunitConverter\JUnit;
 
+use Sseidelmann\JunitConverter\Converters\Issue;
+
 class TestCase
 {
     /**
@@ -108,6 +110,7 @@ class TestCase
         return $this;
     }
 
+
     /**
      * Returns the failures.
      *
@@ -165,6 +168,7 @@ class TestCase
             'classname' => $this->classname,
             'filename ' => $this->fileName,
             'line     ' => $failure->getLine(),
+            'column   ' => $failure->getColumn(),
         ];
         $header = [];
         foreach ($headerVars as $key => $value) {
