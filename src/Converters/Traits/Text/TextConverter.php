@@ -56,6 +56,15 @@ class TextConverter
     }
 
     /**
+     * Returns the number of lines.
+     *
+     * @return int
+     */
+    public function count(): int {
+        return count($this->getLines());
+    }
+
+    /**
      * Returns the line at position $position.
      *
      * @param int $position
@@ -148,5 +157,13 @@ class TextConverter
      */
     private function isValidIndex(int $index): bool {
         return $index >= 0 && $index < count($this->lines);
+    }
+
+    /**
+     * Checks if the end of file is reached.
+     * @return bool
+     */
+    public function eof() {
+        return $this->position == count($this->lines);
     }
 }

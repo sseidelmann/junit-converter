@@ -13,6 +13,7 @@ namespace Sseidelmann\JunitConverter\Converters\CsharpierConsole;
 
 use Sseidelmann\JunitConverter\Converters\AbstractConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
+use Sseidelmann\JunitConverter\Converters\Traits\Text\TextConverter;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
 
@@ -31,9 +32,9 @@ class Converter extends AbstractConverter implements ConverterInterface
     /**
      * Saves the lines.
      *
-     * @var array
+     * @var TextConverter
      */
-    private array $lines = [];
+    private TextConverter $lines;
 
     /**
      * Returns the name.
@@ -46,28 +47,28 @@ class Converter extends AbstractConverter implements ConverterInterface
 
     public function isReport(): bool {
         if (!$this->isXml($this->getInput()) && !$this->isJson($this->getInput())) {
-            $this->text = $this->loadLines($this->getInput());
+            $this->lines = $this->loadLines($this->getInput());
 
-            $this->lines = explode(PHP_EOL, $this->getInput());
+            $header = $this->lines->getHeader();
 
-            if (str_starts_with($this->lines[0], 'Checked 0 files in')) {
-                return count($this->lines) == 1;
+            if (str_starts_with($header, 'Checked 0 files in')) {
+                return $this->lines->count() == 1;
             }
 
-            $foundHeader = $this->matchHeader($this->lines[0]);
-
-            return null !== $foundHeader;
+            return null !== $this->matchHeader($header);
         }
 
         return false;
     }
 
+    /** @inheritDoc */
     public function convert(): Junit {
         $junit = $this->createJunit();
 
         /** @var CsharpierConsoleConverterIssue[] $issues */
         $issues = [];
-        for ($lineCounter = 0; $lineCounter < count($this->lines); $lineCounter++) {
+
+        for ($lineCounter = 0; $lineCounter < $this->lines->count(); $lineCounter++) {
             $line = $this->lines[$lineCounter];
             $tmpHeader = $this->matchHeader($line);
 
@@ -127,7 +128,7 @@ class Converter extends AbstractConverter implements ConverterInterface
 
     private function matchHeader(string $line): ?CsharpierConsoleConverterHeader {
         $matches = [];
-        if (preg_match('/([^\s]+)+\s([^\s]+)\s-\s(.+)/',$line, $matches)) {
+        if (preg_match('/([^\s]+)+\s([^\s]+)\s-\s(.+)/', $line, $matches)) {
             list($line, $severity, $file, $message) = $matches;
             if (in_array($severity, ['Error', 'Warning'])) {
                 return new CsharpierConsoleConverterHeader(
