@@ -75,7 +75,7 @@ class ConvertCommand extends Command
         }
 
         $listOfConverters = [];
-        if ($input->hasOption('converter')) {
+        if ($input->hasOption('converter') && $input->getOption('converter') != null) {
             $listOfConverters[] = $input->getOption('converter');
         }
 
