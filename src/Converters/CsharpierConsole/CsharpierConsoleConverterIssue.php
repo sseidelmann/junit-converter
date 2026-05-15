@@ -24,7 +24,7 @@ class CsharpierConsoleConverterIssue
         $this->header = $header;
         $this->content = $content;
 
-        $this->parse();
+        // $this->parse();
     }
 
     private function parse() {
