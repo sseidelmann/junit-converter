@@ -59,15 +59,16 @@ class Converter extends AbstractConverter implements ConverterInterface
 
         $issueLines = [];
         $header = null;
+        $lastHeader = null;
 
         do {
             $line = $this->lines->current();
             $tmpHeader = $this->matchHeader($line);
             $footer = $this->matchFooter($line);
 
-
             if ($tmpHeader) {
                 $header = $tmpHeader;
+                $lastHeader = $header;
             }
 
             if ($footer) {
@@ -75,15 +76,14 @@ class Converter extends AbstractConverter implements ConverterInterface
                     ->setCheckFilesCount($footer->getFilesCount())
                     ->setDurationInSeconds($footer->getDurationInSeconds())
                 ;
-                $footer = null;
             }
 
             if (!$tmpHeader && !$footer) {
                 $issueLines[] = $line;
             }
 
-            if ($header && count($issueLines) > 0) {
-                $issue = $this->convertToIssue($header, $issueLines);
+            if (($tmpHeader || $footer) && count($issueLines) > 0) {
+                $issue = $this->convertToIssue($lastHeader, $issueLines);
                 $header = null;
                 $issueLines = [];
 
