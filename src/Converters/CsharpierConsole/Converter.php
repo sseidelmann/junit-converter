@@ -66,10 +66,6 @@ class Converter extends AbstractConverter implements ConverterInterface
             $tmpHeader = $this->matchHeader($line);
             $footer = $this->matchFooter($line);
 
-            if ($tmpHeader) {
-                $header = $tmpHeader;
-                $lastHeader = $header;
-            }
 
             if ($footer) {
                 $report->getMetadata()
@@ -83,7 +79,7 @@ class Converter extends AbstractConverter implements ConverterInterface
             }
 
             if (($tmpHeader || $footer) && count($issueLines) > 0) {
-                $issue = $this->convertToIssue($lastHeader, $issueLines);
+                $issue = $this->convertToIssue($header, $issueLines);
                 $header = null;
                 $issueLines = [];
 
@@ -97,6 +93,10 @@ class Converter extends AbstractConverter implements ConverterInterface
                         ->withLine($issue->line)
                     ;
                 });
+            }
+
+            if ($tmpHeader) {
+                $header = $tmpHeader;
             }
         } while ($this->lines->eof());
 
