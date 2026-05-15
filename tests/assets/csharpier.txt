@@ -1,158 +1,233 @@
-Error ./.run/SmartInsights_docker-compose.run.xml - Was not formatted.
-  The file did not end with a single newline.
-Error ./Logic/Logic.csproj - Was not formatted.
+Error ./PrometheusController/PrometheusController.csproj - Was not formatted.
   ----------------------------- Expected: Around Line 2 -----------------------------
   <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
       <TargetFramework>net8.0</TargetFramework>
   ----------------------------- Actual: Around Line 2 -----------------------------
   <Project Sdk="Microsoft.NET.Sdk">
-  	<PropertyGroup>
-  		<TargetFramework>net8.0</TargetFramework>
 
-Error ./test-reports/dotnet-dependencies.xml - Was not formatted.
-  The file did not end with a single newline.
-Error ./.run/SmartInsights_Dockerfile.run.xml - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Server.csproj - Was not formatted.
-  The file did not end with a single newline.
-Error ./.run/SmartInsights.run.xml - Was not formatted.
-  The file did not end with a single newline.
-Error ./NuGet.Config - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Shared.csproj - Was not formatted.
-  ----------------------------- Expected: Around Line 3 -----------------------------
+      <PropertyGroup>
+
+Error ./PrometheusClient/PrometheusClient.csproj - Was not formatted.
+  ----------------------------- Expected: Around Line 2 -----------------------------
+  <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
       <TargetFramework>net8.0</TargetFramework>
-      <Nullable>disable</Nullable>
-  ----------------------------- Actual: Around Line 3 -----------------------------
-    <PropertyGroup>
-  	  <TargetFramework>net8.0</TargetFramework>
-  	  <Nullable>disable</Nullable>
+  ----------------------------- Actual: Around Line 2 -----------------------------
+  <Project Sdk="Microsoft.NET.Sdk">
 
-Error ./Logic/Entities/ApiConnectionStrings.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Constants/ControllerGroupNames.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Logic/Interfaces/ITaskStatisticConverter.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Logic/Interfaces/IMessageProcessingService.cs - Was not formatted.
-  ----------------------------- Expected: Around Line 16 -----------------------------
-      /// </summary>
-      Task<CustomerMessage> GetNextCustomerMessageAsync(
-          int tenantId,
-  ----------------------------- Actual: Around Line 16 -----------------------------
-      /// </summary>
-      Task<CustomerMessage> GetNextCustomerMessageAsync(int tenantId, CancellationToken cancellationToken);
+      <PropertyGroup>
 
-
-Error ./Logic/Interfaces/INlpService.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Extensions/ServiceCollectionExtensions.cs - Was not formatted.
-  ----------------------------- Expected: Around Line 13 -----------------------------
-  {
-      /// <summary>
-      /// Adds the frontend services to the service collection.
-  ----------------------------- Actual: Around Line 13 -----------------------------
-  {
-
-      /// <summary>
-
-Error ./Logic/Business/MessageProcessingService.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/PriceController.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/PaymentController.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/SendMessageRequest.cs - Was not formatted.
-  The file did not end with a single newline.
+Error ./Logic/Constants/RessourceNames.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Enumerations/ActionType.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Exceptions/DuplicateKeyException.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Business/CacheRegionManager.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Interfaces/IApplicationRepository.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
 Error ./Logic/Extensions/ServiceCollectionExtensions.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Logic/Business/TaskStatisticConverter.cs - Was not formatted.
-  ----------------------------- Expected: Around Line 11 -----------------------------
-  {
-      /// <inheritdoc />
-      public MessageStatistic[] ConvertToMessageStatistic(TaskStatistic[] statistics)
-  ----------------------------- Actual: Around Line 11 -----------------------------
-  {
-  ····
-      /// <inheritdoc />
-
-Error ./Server/Business/IIdentityHelper.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/IntentFilter.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/PaymentInformationController.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/CustomerController.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Logic/Business/NlpService.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Entities/IdentityServerAuthenticationSettings.cs - Was not formatted.
-  ----------------------------- Expected: Around Line 8 -----------------------------
-  {
-      #region Members
-
-  ----------------------------- Actual: Around Line 8 -----------------------------
-  {
-
-      #region Members
-
-Error ./Server/Entities/ControllerSettings.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/NerEntityGroup.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/NerEntity.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/ContractCancellationController.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/MessageProcessingController.cs - Was not formatted.
-  ----------------------------- Expected: Around Line 20 -----------------------------
-  {
-      #region Members
-
-  ----------------------------- Actual: Around Line 20 -----------------------------
-  {
-
-      #region Members
-
-Error ./Server/Controllers/NoteController.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/MonthlyPaymentController.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/NerIntent.cs - Was not formatted.
-  The file did not end with a single newline.
+  The file contained different line endings than formatting it would result in.
+Error ./LdapSynchronizationJob/Program.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Interfaces/ICacheRegionManager.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Data/PostgresTenantRepository.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Business/CacheRegionKeyBuilder.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Interfaces/ITenantRepository.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Interfaces/ITenantService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Interfaces/IAuditRepository.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Interfaces/ICacheRegionKeyBuilder.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
 Error ./Server/Program.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/MessagePreviewResponse.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/MessageCloseRequest.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/MessageResponeData.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/IntentWithCategory.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/MessageStatistic.cs - Was not formatted.
-  ----------------------------- Expected: Around Line 22 -----------------------------
-      public long SkipCount { get; init; }
-  }
-  ----------------------------- Actual: Around Line 22 -----------------------------
-      public long SkipCount { get; init; }
+  ----------------------------- Expected: Around Line 111 -----------------------------
+  application.UsePrometheus();
+  application.MapFallbackToFile("/{culture}/users/{**path}", "/index.html");
+  application.MapFallbackToFile("/index.html");
+  ----------------------------- Actual: Around Line 111 -----------------------------
+  application.UsePrometheus();
+  application.MapFallbackToFile(
+      "/{culture}/users/{**path}",
 
-  }
+Error ./Logic/Data/PostgresAuditRepository.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Business/DuplicateKeyExceptionFilter.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Interfaces/IUserService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Entities/ConnectionStrings.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Entities/CacheSettings.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Entities/UserDetailPage.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Business/ApplicationBffService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Entities/ApplicationGrantContextForUser.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Interfaces/IApplicationBffService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Interfaces/IUserRepository.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Enumerations/UserSource.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Entities/ApplicationDetailPage.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Interfaces/IApplicationService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Extensions/ServiceCollectionExtensions.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Controllers/UserBffController.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Constants/ApplicationPrivilegeIdentifications.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/CreateApplicationPrivilegeRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Interfaces/IUserBffService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/UpdateApplicationRolePrivilegesRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Business/UserBffService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Entities/UserGrantDetail.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Enumerations/UserGrantType.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Controllers/TenantController.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Controllers/ApplicationBffController.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/UpdateApplicationRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Client.Tests.Integration/Tests/ApplicationsApiTests.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Constants/ControllerGroupNames.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/CreateTenantRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/Tenant.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/ApplicationPrivilege.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/UserGrant.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/CreateApplicationRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/RemoveApplicationRoleGrantFromUserRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Client/AuthorizationAlligatorClient.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/CreateApplicationRoleRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Collections/UserPermissionCollection.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/Application.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./LdapSynchronizationJob/Constants/BusinessErrorCodes.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/UpdateApplicationPrivilegeRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/User.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/UpdateApplicationRoleRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/UserFilter.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/ApplicationRole.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/CreateUserRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/UserPermission.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./LdapSynchronizationJob/Entities/LdapSettings.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/UpdateTenantRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./LdapSynchronizationJob/Interfaces/IUserRepository.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/AddApplicationPrivilegeGrantToUserRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./LdapSynchronizationJob/Business/LdapExecutor.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/AddApplicationRoleGrantToUserRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Constants/ClaimTypes.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./LdapSynchronizationJob/Business/LdapReader.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Business/SkipClaimEnrichmentAttribute.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Constants/SecuritySchemeIdentifications.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./LdapSynchronizationJob/Data/LdapUserRepository.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Business/UserPermissionService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Entities/IdentityServerAuthenticationSettings.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Constants/ControllerGroupNames.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Controllers/AuthorizationAlligatorController.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Business/UserPermissionAttribute.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Client/Constants/HttpClientNames.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Data/PostgresUserRepository.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Entities/CacheSettings.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Interfaces/IUserPermissionConverter.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Extensions/ClaimsPrincipalExtensions.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Client/Entities/AuthorizationAlligatorClientConfiguration.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/UpdateUserRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Data/PostgresApplicationRepository.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Business/UserPermissionFilter.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Client/Extensions/ServiceCollectionExtensions.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Business/UserPermissionConverter.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./LdapSynchronizationJob/Services/LdapSynchronizer.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Entities/AuthorizationSettings.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Interfaces/IUserPermissionService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Shared/Entities/RemoveApplicationPrivilegeGrantFromUserRequest.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Client/Interfaces/IAuthorizationAlligatorClient.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Server/Controllers/UserController.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Business/TenantService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Business/ApplicationService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic.External/Extensions/ServiceCollectionExtensions.cs - Was not formatted.
+  ----------------------------- Expected: Around Line 76 -----------------------------
+                                  ?.Metadata.GetMetadata<SkipClaimEnrichmentAttribute>()
+                                  is not null;
+                          if (shouldSkipEnrichment)
+  ----------------------------- Actual: Around Line 76 -----------------------------
+                                  ?.Metadata.GetMetadata<SkipClaimEnrichmentAttribute>()
+                              is not null;
+                          if (shouldSkipEnrichment)
 
-Error ./Shared/Entities/AssignedToFilter.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/MessagePreview.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Shared/Entities/Message.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/MeterReadingController.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/MagicKeyController.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/OrderController.cs - Was not formatted.
-  The file did not end with a single newline.
-Error ./Server/Controllers/MessageController.cs - Was not formatted.
-  The file did not end with a single newline.
-Checked 47 files in 1673ms.
+Error ./Server/Controllers/ApplicationController.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Error ./Logic/Business/UserService.cs - Was not formatted.
+  The file contained different line endings than formatting it would result in.
+Checked 111 files in 1355ms.

@@ -18,6 +18,8 @@ use Sseidelmann\JunitConverter\Converters\Traits\Text\TextConverterTrait;
 use Sseidelmann\JunitConverter\Converters\Traits\Xml\XmlConverterInterface;
 use Sseidelmann\JunitConverter\Converters\Traits\Xml\XmlConverterTrait;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
+use Sseidelmann\JunitConverter\Report\Report;
+use Sseidelmann\JunitConverter\Report\Type;
 
 abstract class AbstractConverter implements
     ConverterInterface,
@@ -75,5 +77,9 @@ abstract class AbstractConverter implements
      */
     protected function createJunit(): JUnit {
         return new JUnit();
+    }
+
+    protected function createReport(string $name, Type $type): Report {
+        return new Report($name, $type);
     }
 }

@@ -16,12 +16,17 @@ use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\Converters\Traits\Text\TextConverter;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
+use Sseidelmann\JunitConverter\Report\Issue;
+use Sseidelmann\JunitConverter\Report\Report;
+use Sseidelmann\JunitConverter\Report\Type;
 
 /**
  * Converter for csharpier console output.
  */
 class Converter extends AbstractConverter implements ConverterInterface
 {
+    const NAME = 'CSharpier Report';
+
     /**
      * Saves the lines.
      *
@@ -47,68 +52,73 @@ class Converter extends AbstractConverter implements ConverterInterface
     }
 
     /** @inheritDoc */
-    public function convert(): Junit {
-        $junit = $this->createJunit();
+    public function convert(): Report {
+        $report = $this->createReport(self::NAME, Type::Codelint);
 
-        /** @var CsharpierConsoleConverterIssue[] $issues */
-        $issues = [];
+        $this->lines->rewind();
 
-        while (false !== $this->lines->eof()) {
+        $issueLines = [];
+        $header = null;
+
+        do {
             $line = $this->lines->current();
             $tmpHeader = $this->matchHeader($line);
+            $footer = $this->matchFooter($line);
 
-            if ($tmpHeader !== null) {
+
+            if ($tmpHeader) {
                 $header = $tmpHeader;
+            }
 
-                $tmpHeader = null;
+            if ($footer) {
+                $report->getMetadata()
+                    ->setCheckFilesCount($footer->getFilesCount())
+                    ->setDurationInSeconds($footer->getDurationInSeconds())
+                ;
+                $footer = null;
+            }
+
+            if (!$tmpHeader && !$footer) {
+                $issueLines[] = $line;
+            }
+
+            if ($header && count($issueLines) > 0) {
+                $issue = $this->convertToIssue($header, $issueLines);
+                $header = null;
                 $issueLines = [];
-                do {
-                    $nextLine = $this->lines->getLineAt($this->lines->getPosition() + count($issueLines) + 1);
-                    $tmpHeader = $this->matchHeader($nextLine);
 
-                    if (null === $tmpHeader) {
-                        $message = $nextLine;
-
-                        if (preg_match('/\s\s(.+)/', $message, $matches)) {
-                            $message = $matches[1];
-                        }
-
-                        if (preg_match('/\-+\sExpected\:\sAround\sLine\s([^\s]+)\s\-+/', $message, $matches)) {
-                            $header->line = (int) $matches[1];
-                        }
-
-                        $issueLines[] = $message;
-                    } else {
-                        $issues[] = new CsharpierConsoleConverterIssue($header, $issueLines);
-                    }
-                } while ($tmpHeader === null && ($this->lines->getPosition() + count($issueLines) + 1) < count($this->lines));;
+                $report->createIssue(function (Issue $reportIssue) use ($issue) {
+                    $reportIssue
+                        ->withType("Formatting")
+                        ->withFile($issue->header->file)
+                        ->withMessage($issue->header->message)
+                        ->withSeverity($issue->header->severity)
+                        ->withDescription(implode(PHP_EOL, $issue->content))
+                        ->withLine($issue->line)
+                    ;
+                });
             }
+        } while ($this->lines->eof());
+
+        return $report;
+    }
+
+
+
+    /**
+     * Matches the footer.
+     *
+     * @param string $line
+     *
+     * @return CsharpierConsoleConverterFooter|null
+     */
+    private function matchFooter(string $line): ?CsharpierConsoleConverterFooter {
+        $matches = [];
+        if (preg_match('/Checked ([\d]+) files in (.*)\./', $line, $matches)) {
+            return new CsharpierConsoleConverterFooter((int) $matches[1], $matches[2]);
         }
 
-        $issuesByFile = [];
-        foreach ($issues as $issue) {
-            $issuesByFile[$issue->header->file][] = $issue;
-        }
-
-        $testSuite = $junit->testSuite("csharpier");
-        foreach ($issuesByFile as $file => $issues) {
-            foreach ($issues as $issue) {
-                $failure = Failure::Generic(
-                    $issue->header->severity,
-                    $issue->header->message,
-                    implode(PHP_EOL, $issue->content)
-                );
-
-                $message = $issue->header->message;
-                $failure->withLine($issue->header->line);
-
-                $testCase = $testSuite->testCase($message);
-                $testCase->withClassname($file);
-                $testCase->addFailure($failure);
-            }
-        }
-
-        return $junit;
+        return null;
     }
 
     private function matchHeader(string $line): ?CsharpierConsoleConverterHeader {
@@ -127,32 +137,17 @@ class Converter extends AbstractConverter implements ConverterInterface
 
         return null;
     }
-}
 
-class CsharpierConsoleConverterIssue {
-
-    public CsharpierConsoleConverterHeader $header;
-    public array $content;
-
-    public function __construct(CsharpierConsoleConverterHeader $header, array $content)
+    /**
+     * Converts the issue to the issue object.
+     *
+     * @param CsharpierConsoleConverterHeader $header
+     * @param array $issueLines
+     *
+     * @return CsharpierConsoleConverterIssue
+     */
+    public function convertToIssue(CsharpierConsoleConverterHeader $header, array $issueLines): CsharpierConsoleConverterIssue
     {
-        $this->header = $header;
-        $this->content = $content;
-    }
-}
-
-class CsharpierConsoleConverterHeader {
-    public string $fullLine;
-    public string $severity;
-    public string $file;
-    public string $message;
-
-    public ?int $line = null;
-
-    public function __construct($line, $severity, $file, $message) {
-        $this->fullLine = $line;
-        $this->severity = $severity;
-        $this->file = $file;
-        $this->message = $message;
+        return new CsharpierConsoleConverterIssue($header, $issueLines);
     }
 }

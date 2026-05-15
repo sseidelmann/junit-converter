@@ -27,10 +27,8 @@ class ConverterFactory
         CheckstyleConverter::class,
         DotnetPackageListJsonConverter::class,
         NpmOutdatedJsonConverter::class,
-        SonarqubeConverter::class,
         GnuConverter::class,
-        CsharpierConsoleConverter::class,
-        SarifConverter::class,
+        CsharpierConsoleConverter::class
     ];
 
     public function guessConverter(string $input, array $listOfConverters = []): ?ConverterInterface {

@@ -94,9 +94,9 @@ class ConvertCommand extends Command
             return 1;
         }
 
-        $junit = $converter->convert();
+        $report = $converter->convert();
 
-        $output->write((string) $junit);
+        $output->write((string) $report->toJunit());
 
         return 0;
     }

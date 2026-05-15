@@ -49,6 +49,7 @@ class TestCase
      * @var ?string
      */
     private ?string $classname = null;
+    private array $attributes = [];
 
     /**
      * Default constructor.
@@ -59,11 +60,21 @@ class TestCase
     public function __construct(string $name, int $line = 0) {
         $this->name = $name;
         $this->line = $line;
+
+        $this->withAttribute('name', $name);
+    }
+
+    private function withAttribute(string $name, $value): TestCase {
+        $this->attributes[$name] = $value;
+        return $this;
+    }
+
+    public function withDurationInSeconds(float $durationInSeconds): TestCase {
+        return $this->withAttribute('time', $durationInSeconds);
     }
 
     public function withClassname(string $classname): self {
-        $this->classname = $classname;
-        return $this;
+        return $this->withAttribute('classname', $classname);
     }
 
     /**
@@ -132,8 +143,13 @@ class TestCase
     public function toXML(\DOMDocument $document): \DOMNode {
         $node = $document->createElement('testcase');
 
-        $node->setAttribute('name', $this->name);
-        $node->setAttribute('failures', (string) count($this->failures));
+        // $node->setAttribute('name', $this->name);
+        // $node->setAttribute('failures', (string) count($this->failures));
+
+
+        foreach ($this->attributes as $name => $value) {
+            $node->setAttribute($name, (string) $value);
+        }
 
         /* currently disabled because of issue in dot splitting
          * @see https://github.com/golangci/golangci-lint/issues/748
@@ -145,17 +161,6 @@ class TestCase
 
 
         foreach ($this->failures as $failure) {
-            $header = $this->createHeaderForDescription($failure);
-            if (count($header) > 0) {
-                $failure->withDescription(
-                    sprintf(
-                        "%s\n\n%s",
-                        implode("\n", $header),
-                        $failure->getDescription(),
-                    )
-                );
-            }
-
             $node->appendChild($failure->toXML($document));
         }
 

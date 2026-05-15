@@ -15,12 +15,16 @@ use Sseidelmann\JunitConverter\Converters\AbstractConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
+use Sseidelmann\JunitConverter\Report\Report;
+use Sseidelmann\JunitConverter\Report\Type;
 
 /**
  * Converter for handling dotnet packages.
  */
 class Converter extends AbstractConverter implements ConverterInterface
 {
+    const NAME = 'Dotnet Packagelist Report';
+
     /**
      * Saves the converted data.
      *
@@ -58,12 +62,10 @@ class Converter extends AbstractConverter implements ConverterInterface
     /**
      * Converts the dotnet package output to junit format
      *
-     * @return JUnit
+     * @return Report
      */
-    public function convert(): Junit {
-        $junit = $this->createJunit();
-
-        $testSuite = $junit->testSuite("dotnet_packages");
+    public function convert(): Report {
+        $report = $this->createReport(self::NAME, Type::Codelint);
 
         $type = 'unknown';
 
@@ -75,25 +77,27 @@ class Converter extends AbstractConverter implements ConverterInterface
         }
 
         foreach ($this->data['projects'] as $project) {
-            $testCase = $testSuite->testCase($project['path']);
-
             foreach ($project['frameworks'] as $framework) {
                 foreach ($framework['topLevelPackages'] as $topLevelPackage) {
                     if ($topLevelPackage['requestedVersion'] != $topLevelPackage['latestVersion']) {
-                        $testCase->addFailure(Failure::Generic(
-                            $type,
-                            $topLevelPackage['id'],
-                            sprintf(
+                        $reportIssue = $report->createIssue();
+
+                        $reportIssue
+                            ->withType("Deprecated Packages")
+                            ->withFile($project['path'])
+                            ->withMessage($topLevelPackage['id'])
+                            ->withSeverity($type)
+                            ->withDescription(sprintf(
                                 'from "%1$s" to "%2$s"',
                                 $topLevelPackage['requestedVersion'],
                                 $topLevelPackage['latestVersion']
-                            )
-                        ));
+                            ))
+                        ;
                     }
                 }
             }
         }
 
-        return $junit;
+        return $report;
     }
 }

@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Sseidelmann\JunitConverter\Converters;
 
 use Sseidelmann\JunitConverter\JUnit\JUnit;
+use Sseidelmann\JunitConverter\Report\Report;
 
 /**
  * Coverter Interface.
@@ -28,9 +29,9 @@ interface ConverterInterface
     /**
      * Converts the source to the JUnit format.
      *
-     * @return JUnit
+     * @return Report
      */
-    public function convert(): Junit;
+    public function convert(): Report;
 
     /**
      * Returns the name of the converter.

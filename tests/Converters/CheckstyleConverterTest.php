@@ -23,6 +23,7 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Sseidelmann\JunitConverter\Converters\Checkstyle\Converter;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
+use Sseidelmann\JunitConverter\Report\Report;
 
 class CheckstyleConverterTest extends TestCase
 {
@@ -56,6 +57,6 @@ class CheckstyleConverterTest extends TestCase
             $this->loadAsset('checkstyle.xml')
         );
 
-        $this->assertInstanceOf(JUnit::class, $checkstyleConverter->convert());
+        $this->assertInstanceOf(Report::class, $checkstyleConverter->convert());
     }
 }

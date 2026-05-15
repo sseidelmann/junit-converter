@@ -29,6 +29,8 @@ class TestSuite
      */
     private array $testCases = [];
 
+    private array $attributes = [];
+
     /**
      * Default constructor
      *
@@ -37,6 +39,22 @@ class TestSuite
     public function __construct(string $name) {
         $this->name = $name;
     }
+
+    private function withAttribute(string $name, $value): TestSuite {
+        $this->attributes[$name] = $value;
+        return $this;
+    }
+
+    public function withTestsCount(int $testsCount): TestSuite {
+        return $this->withAttribute('tests', $testsCount);
+    }
+    public function withFailuresCount(int $failuresCount): TestSuite {
+        return $this->withAttribute('failures', $failuresCount);
+    }
+    public function withDurationInSeconds(float $durationInSeconds): TestSuite {
+        return $this->withAttribute('time', $durationInSeconds);
+    }
+
 
     /**
      * Adds the test case.
@@ -99,13 +117,17 @@ class TestSuite
         return $total;
     }
 
+    private function getAttribute(string $name, $default = null) {
+        return $this->attributes[$name] ?? $default;
+    }
+
     /**
      * Returns the total count.
      *
      * @return int
      */
     public function getTestsCount(): int {
-        return $this->getFailureCount();
+        return $this->getAttribute('tests', $this->getFailureCount());
     }
 
     /**

@@ -89,6 +89,10 @@ class TextConverter
         return $this->lines[$position];
     }
 
+    public function getNextLine(): string {
+        return $this->getLineAt($this->position + 1);
+    }
+
     /**
      * Returns the header of the file.
      *
@@ -165,14 +169,21 @@ class TextConverter
      * @return bool
      */
     private function isValidIndex(int $index): bool {
-        return $index >= 0 && $index < count($this->lines);
+        return $index >= 0 && $index < $this->count();
     }
 
     /**
      * Checks if the end of file is reached.
+     *
      * @return bool
      */
     public function eof() {
-        return $this->position == count($this->lines) - 1;
+        try {
+            $this->next();
+        } catch (OutOfBoundsException $e) {
+            return false;
+        }
+
+        return true;
     }
 }

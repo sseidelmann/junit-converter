@@ -47,17 +47,6 @@ class ConverterFactoryTest extends TestCase
     }
 
     #[Test]
-    public function itGuessesTheSonarqubeConverter(): void {
-        $converterFactory = new ConverterFactory();
-
-        $converter = $converterFactory->guessConverter(
-            $this->loadAsset('docker_sonarqube.json')
-        );
-
-        $this->assertInstanceOf(SonarqubeConverter::class, $converter);
-    }
-
-    #[Test]
     public function itGuessesTheGnuConverter(): void {
         $converterFactory = new ConverterFactory();
 

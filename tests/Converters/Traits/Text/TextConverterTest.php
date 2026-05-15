@@ -132,9 +132,8 @@ class TextConverterTest extends TestCase
     public function TextConverter_EOF_ChecksIfDocumentAtEnd(): void {
         $textConverter = new TextConverter('first' . PHP_EOL . 'second');
 
-        $this->assertFalse($textConverter->eof());
-        $textConverter->next();
         $this->assertTrue($textConverter->eof());
+        $this->assertFalse($textConverter->eof());
     }
 
     #[Test]

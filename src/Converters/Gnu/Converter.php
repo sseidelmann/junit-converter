@@ -16,9 +16,13 @@ use Sseidelmann\JunitConverter\Converters\AbstractConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
+use Sseidelmann\JunitConverter\Report\Report;
+use Sseidelmann\JunitConverter\Report\Type;
 
 class Converter extends AbstractConverter implements ConverterInterface
 {
+    const NAME = 'GNU Report';
+
     private array $matches;
 
     public function getName(): string {
@@ -42,10 +46,8 @@ class Converter extends AbstractConverter implements ConverterInterface
         return false;
     }
 
-    public function convert(): Junit {
-        $junit = new JUnit();
-
-        $testSuite = $junit->testSuite("gnu");
+    public function convert(): Report {
+        $report = $this->createReport(self::NAME, Type::Codelint);
 
         $fileMatches = [];
 
@@ -61,23 +63,21 @@ class Converter extends AbstractConverter implements ConverterInterface
 
         /** @var DOMElement $file */
         foreach ($fileMatches as $file => $matches) {
-            $testCase = $testSuite->testCase($file);
-
             foreach ($matches as $match) {
-                $testCase->addFailure(Failure::Generic(
-                    $match['severity'],
-                    $match['rule'],
-                    sprintf(
-                        '%1$s in %2$s on line %3$s',
-                        $match['message'],
-                        $file,
-                        $match['line']
-                    )
-                ));
+                $reportIssue = $report->createIssue();
+
+                $reportIssue
+                    ->withType("GNU Formatting")
+                    ->withFile($file)
+                    ->withMessage($match['rule'])
+                    ->withSeverity($match['severity'])
+                    ->withDescription($match['message'])
+                    ->withLine((int) $match['line'])
+                ;
             }
         }
 
 
-        return $junit;
+        return $report;
     }
 }

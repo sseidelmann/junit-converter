@@ -15,12 +15,16 @@ use Sseidelmann\JunitConverter\Converters\AbstractConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
+use Sseidelmann\JunitConverter\Report\Report;
+use Sseidelmann\JunitConverter\Report\Type;
 
 /**
  * Converter for handling outdated npm packages.
  */
 class Converter extends AbstractConverter implements ConverterInterface
 {
+    const NAME = 'NPM Outdated Packages Report';
+
     /**
      * Saves the converted data.
      *
@@ -55,26 +59,27 @@ class Converter extends AbstractConverter implements ConverterInterface
         return false;
     }
 
-    public function convert(): Junit {
-        $junit = new JUnit();
-
-        $testSuite = $junit->testSuite("npm_outdated");
-
-        $testCase = $testSuite->testCase('package.json');
+    public function convert(): Report {
+        $report = $this->createReport(self::NAME, Type::Codelint);
 
         foreach ($this->data as $package => $outdatedInformation) {
             if ($outdatedInformation['wanted'] != $outdatedInformation['latest']) {
-                $testCase->addFailure(Failure::Warning(
-                    $package,
-                    sprintf(
+                $reportIssue = $report->createIssue();
+
+                $reportIssue
+                    ->withType("Formatting")
+                    ->withFile('package.json')
+                    ->withMessage($package)
+                    ->withSeverity('Failure')
+                    ->withDescription(sprintf(
                         'from "%1$s" to "%2$s"',
                         $outdatedInformation['wanted'],
                         $outdatedInformation['latest']
-                    )
-                ));
+                    ))
+                ;
             }
         }
 
-        return $junit;
+        return $report;
     }
 }

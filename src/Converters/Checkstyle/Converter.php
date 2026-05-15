@@ -17,9 +17,14 @@ use Sseidelmann\JunitConverter\Converters\AbstractConverter;
 use Sseidelmann\JunitConverter\Converters\ConverterInterface;
 use Sseidelmann\JunitConverter\JUnit\Failure;
 use Sseidelmann\JunitConverter\JUnit\JUnit;
+use Sseidelmann\JunitConverter\Report\Issue;
+use Sseidelmann\JunitConverter\Report\Report;
+use Sseidelmann\JunitConverter\Report\Type;
 
 class Converter extends AbstractConverter implements ConverterInterface
 {
+    const NAME = 'Checkstyle Report';
+
     public function getName(): string {
         return 'checkstyle';
     }
@@ -37,13 +42,14 @@ class Converter extends AbstractConverter implements ConverterInterface
         return false;
     }
 
-    public function convert(): Junit {
+    public function convert(): Report
+    {
         $dom = $this->loadXml($this->getInput());
 
         $xpath = new DOMXPath($dom);
         $checkstyle = $xpath->query("//checkstyle")->item(0);
 
-        $junit = $this->createJunit();
+        $report = $this->createReport(self::NAME, Type::Codelint);
 
         $files = $xpath->query('file', $checkstyle);
 
@@ -51,39 +57,24 @@ class Converter extends AbstractConverter implements ConverterInterface
         foreach ($files as $file) {
             $fileName = $file->getAttribute('name');
 
-            $testSuite = $junit->testSuite("checkstyle");
-
             $errors = $xpath->query('error', $file);
 
-            $errorsByLine = [];
-
             foreach ($errors as $error) {
-                $source = $error->getAttribute('source');
-                $errorsByLine[$source][] = $error;
-            }
-
-            foreach ($errorsByLine as $source => $errors) {
-                foreach ($errors as $error) {
-                    $line = (int) $error->getAttribute('line');
-                    $column = $error->getAttribute('column');
-                    $severity = $error->getAttribute('severity');
-                    $message = $error->getAttribute('message');
-
-                    $testCase = $testSuite->testCase(sprintf('Rule %s', $source), $line);
-
-                    $failure = new Failure();
-                    $failure
-                        ->withType(sprintf('%s (%s)', $message, $source))
-                        ->withMessage(sprintf('%s, on line %s', $message, $line))
-                        ->withDescription(sprintf('%s %s', strtoupper($severity), $message))
+                $reportIssue = $report->createIssue(function (Issue $reportIssue) use ($fileName, $error) {
+                    $reportIssue
+                        ->withType("Formatting")
+                        ->withFile($fileName)
+                        ->withMessage($error->getAttribute('message'))
+                        ->withSeverity($error->getAttribute('severity'))
+                        ->withDescription($error->getAttribute('message'))
+                        ->withLine((int) $error->getAttribute('line'))
+                        ->withColumn((int) $error->getAttribute('column'))
                     ;
+                });
 
-                    $testCase->addFailure($failure);
-                    $testCase->withClassname($fileName);
-                }
             }
         }
 
-        return $junit;
+        return $report;
     }
 }

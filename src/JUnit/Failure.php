@@ -100,6 +100,10 @@ class Failure
         $node->setAttribute('type', $this->type);
         $node->setAttribute('message', $this->message);
 
+        if ($this->line !== null) {
+            $node->setAttribute('line', (string) $this->line);
+        }
+
         return $node;
     }
 }

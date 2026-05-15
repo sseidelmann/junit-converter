@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Code Formatting Checks" tests="111" failures="92" time="1.355">
+    <testsuite name="Dotnet Format" tests="111" failures="92" errors="0" skipped="0" time="1.355">
+
+        <!-- Beispiel 1: Fehler mit Diff-Details -->
+        <testcase classname="Formatting" name="./PrometheusController/PrometheusController.csproj" time="0">
+            <failure message="Was not formatted. Check line 2.">
+                Expected: Around Line 2
+                &lt;Project Sdk="Microsoft.NET.Sdk"&gt;
+                &lt;PropertyGroup&gt;
+                &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;
+                Actual: Around Line 2
+                &lt;Project Sdk="Microsoft.NET.Sdk"&gt;
+                &lt;PropertyGroup&gt;
+            </failure>
+        </testcase>
+
+        <!-- Beispiel 2: Fehler mit Line Ending Details -->
+        <testcase classname="Formatting" name="./Logic/Constants/RessourceNames.cs" time="0">
+            <failure message="Was not formatted.">
+                The file contained different line endings than formatting it would result in.
+            </failure>
+        </testcase>
+
+        <!-- Beispiel 3: Weitere Datei mit Diff -->
+        <testcase classname="Formatting" name="./Server/Program.cs" time="0">
+            <failure message="Was not formatted. Check line 111.">
+                Expected: Around Line 111
+                application.UsePrometheus();
+                application.MapFallbackToFile("/{culture}/users/{**path}", "/index.html");
+                Actual: Around Line 111
+                application.UsePrometheus();
+                application.MapFallbackToFile(
+                "/{culture}/users/{**path}",
+            </failure>
+        </testcase>
+
+        <!-- ... Hier würden alle weiteren 89 fehlerhaften Dateien als <testcase> folgen ... -->
+        <!-- Für die 19 erfolgreichen Dateien (111 Gesamt - 92 Fehler) wird nur das Tag ohne Failure generiert: -->
+
+        <testcase classname="Formatting" name="SuccessfulFile.cs" time="0" />
+
+    </testsuite>
+</testsuites>

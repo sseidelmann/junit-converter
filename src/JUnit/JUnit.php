@@ -67,6 +67,26 @@ class JUnit
         return false;
     }
 
+    private array $attributes = [];
+
+    private function withAttribute(string $name, $value): JUnit {
+        $this->attributes[$name] = $value;
+        return $this;
+    }
+
+    public function withName(string $name): JUnit {
+        return $this->withAttribute('name', $name);
+    }
+    public function withTestsCount(int $testsCount): JUnit {
+        return $this->withAttribute('tests', $testsCount);
+    }
+    public function withFailuresCount(int $failuresCount): JUnit {
+        return $this->withAttribute('failures', $failuresCount);
+    }
+    public function withDurationInSeconds(float $durationInSeconds): JUnit {
+        return $this->withAttribute('time', $durationInSeconds);
+    }
+
     /**
      * Renders the XML.
      *
@@ -80,6 +100,10 @@ class JUnit
 
         $testSuites = $document->createElement('testsuites');
         $document->appendChild($testSuites);
+
+        foreach ($this->attributes as $name => $value) {
+            $testSuites->setAttribute($name, (string) $value);
+        }
 
         foreach ($this->testSuites as $testSuite) {
             $testSuites->appendChild($testSuite->toXML($document));
